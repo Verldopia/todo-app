@@ -1,0 +1,244 @@
+/* Reset all styling */
+@import url("reset.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    scroll-behavior: smooth;
+    cursor:default;
+}
+
+body {
+    font-size: 1.1rem;
+    background: linear-gradient(#cc38b8, #bd8c22);
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+.larger,
+h3,
+ul {
+    padding: 1rem 2rem;
+    text-decoration: none;
+}
+a > *,
+a {
+    cursor: pointer;
+    color: #FFF;
+    text-decoration: none;
+}
+.larger {
+    font-size: 1.3rem;
+    padding-top: 2rem;
+}
+::-webkit-scrollbar {
+    width: 0.3rem;
+}
+::-webkit-scrollbar-track {
+    border-radius: 1rem;
+}
+::-webkit-scrollbar-thumb {
+    background: #b131a0; 
+    border-radius: 1rem;
+}
+
+/* Header */
+
+header {
+    color: #fff;
+    background-color: #b131a0;
+    padding: 1.5rem;
+}
+.header-box,
+.header-box--logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-box {
+    margin: 0 1rem;
+    justify-content: space-between;
+}
+.header-box h1 {
+    padding: 0 1rem;
+}
+.header-box--logo {
+    width: 12rem;
+}
+.header-img {
+    height: 2rem;
+    width: 2rem;
+    padding: 1rem 1rem 1rem 0;
+    background-image: url(../images/logo.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 60%;
+}
+
+/* Navigation */
+
+.nav-container {
+    border-right: 1px solid #8b267e;
+    position: sticky;
+    top: 0;
+    width: 25rem;
+    height: calc(100vh - 98px);
+}
+.nav-container h3 {
+    margin: 2rem 0 0;
+}
+
+/* Main */
+
+main {
+    display: flex;
+}
+form,
+.box-clear {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+}
+.box-clear--bottom {
+    margin-bottom: 3rem;
+}
+li {
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    height: 2.5rem;
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    transition: all ease 0.2s;
+}
+.main-container {
+    width: 65rem;
+    position: relative;
+    max-width: calc(100% - 2rem);
+    background-color: #f0f8ff;
+    margin: 2rem 1rem;
+    height: min-content;
+    max-height: calc(100vh - 10.2rem);
+    border-radius: 0.5rem;
+    overflow-y: scroll;
+}
+@media (min-width: 84rem) {
+    .main-container {
+        margin: 2rem auto;
+    }
+}
+.input {
+    height: calc(2.5rem - 2px);
+}
+.input,
+.p--pending {
+    padding-left: 1rem;
+    flex-grow: 2;
+    border-radius: 0.2rem;
+    border: 1px solid #cc38b8;
+}
+.input {
+    cursor: auto;
+}
+.submit,
+.done,
+.clear,
+.edit {
+    background-color: #cc38b8;
+    color: #FFF;
+    height: 2.5rem;
+    width: 2.5rem;
+    border: none;
+    border-radius: 0.2rem;
+    transition: all ease 0.2s;
+    cursor: pointer;
+}
+.done {
+    position: absolute;
+    left: -3rem;
+    background-color: #009c15;
+    background-image: url(../images/checkmark-circle.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.box--clear-edit {
+    position: absolute;
+    right: -2.7rem;
+    transition: ease all 0.2s;
+}
+.edit,
+.clear {
+    background-image: url(../images/delete--white.png);
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(204, 33, 76);
+}
+.edit {
+    background-image: url(../images/edit--white.png);
+    background-color: rgb(61, 48, 48);
+}
+.done:hover,
+.clear:hover,
+.edit:hover {
+    opacity: 70%;
+}
+li:hover > .done {
+    left: 0;
+}
+li:hover > .box--clear-edit {
+    right: 0;
+}
+li:hover {
+    padding-left: 3rem;
+}
+.submit:hover {
+    opacity: 70%;
+}
+.logout,
+.header-box--logo {
+    transition: ease all 0.2s;
+    border-radius: 2rem;
+}
+.logout {
+    padding: 1rem 2rem;
+}
+.logout:hover,
+.header-box--logo:hover {
+    background-color: #8b267e;
+}
+.p--pending {
+    border: none;
+    padding: 0;
+}
+.submit--clear {
+    width: 8rem;
+    margin-right: 1px;
+}
+
+/* Button to top  */
+
+#btn-totop {
+    z-index: 100;
+    position: absolute;
+    padding: 1.1rem;
+    color: #010409;
+    background-color: #cc38b8;
+    background-image: url(../images/arrow-up.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    bottom: 2rem;
+    height: 2.5rem;
+    width: 5rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    transition: ease all 0.3s;
+    opacity: 0;
+}
+#btn-totop:hover {
+    transform: scale(1.2, 0.9);
+}
