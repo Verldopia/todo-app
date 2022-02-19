@@ -1,6 +1,9 @@
-/* Reset all styling */
+/* Imports */
+
 @import url("reset.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Global scopes */
 
 * {
     scroll-behavior: smooth;
@@ -9,9 +12,12 @@
 
 body {
     font-size: 1.1rem;
+    position: relative;
     background: linear-gradient(#cc38b8, #bd8c22);
     font-family: 'Roboto', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
+    max-width: 130rem;
+    margin: 0 auto;
 }
 .larger,
 h3,
@@ -25,10 +31,9 @@ a {
     color: #FFF;
     text-decoration: none;
 }
-.larger {
-    font-size: 1.3rem;
-    padding-top: 2rem;
-}
+
+/* Scrollbar */
+
 ::-webkit-scrollbar {
     width: 0.3rem;
 }
@@ -44,8 +49,8 @@ a {
 
 header {
     color: #fff;
-    background-color: #b131a0;
-    padding: 1.5rem;
+    box-shadow: 0 2px 10px #8b267e;
+    padding: 1rem 1.5rem;
 }
 .header-box,
 .header-box--logo {
@@ -76,14 +81,22 @@ header {
 /* Navigation */
 
 .nav-container {
-    border-right: 1px solid #8b267e;
+    box-shadow: 2px 7px 10px -2px #8b267e;
     position: sticky;
     top: 0;
     width: 25rem;
-    height: calc(100vh - 98px);
+    height: calc(100vh - 96px);
 }
 .nav-container h3 {
     margin: 2rem 0 0;
+}
+.larger {
+    font-size: 1.3rem;
+    padding-top: 2rem;
+}
+.larger--categories {
+    color: #f0f8ff;
+  box-shadow: 0 2px 10px -1px #8b267e;
 }
 
 /* Main */
@@ -124,6 +137,7 @@ li {
     max-height: calc(100vh - 10.2rem);
     border-radius: 0.5rem;
     overflow-y: scroll;
+    box-shadow: 2px 2px 10px -2px #8b267e;
 }
 @media (min-width: 84rem) {
     .main-container {
@@ -208,7 +222,7 @@ li:hover {
 }
 .logout:hover,
 .header-box--logo:hover {
-    background-color: #8b267e;
+    background-color: #9c2c8d;
 }
 .p--pending {
     border: none;
@@ -225,13 +239,12 @@ li:hover {
     z-index: 100;
     position: absolute;
     padding: 1.1rem;
-    color: #010409;
     background-color: #cc38b8;
     background-image: url(../images/arrow-up.svg);
     background-position: center;
     background-repeat: no-repeat;
     border: none;
-    bottom: 2rem;
+    bottom: 3rem;
     height: 2.5rem;
     width: 5rem;
     border-radius: 0.2rem;
