@@ -6,7 +6,7 @@ $btn.addEventListener('click', toTop);
 
 function scrollDown() {
   if ($main.scrollTop > 100) {
-    $btn.style.right = 'calc(5.5rem - 2px)';
+    $btn.style.right = 'calc(5.5rem - 3px)';
     $btn.style.opacity = '1';
   } else {
     $btn.style.right = '-10rem';
