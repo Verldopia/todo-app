@@ -1,0 +1,16 @@
+<div class="box-clear">
+    <h3 class="p--pending">You have {{tasks.length}} pending tasks</h3>
+    <input class="submit submit--clear" type="submit" value="Clear All">
+</div>
+<ul class="tasks">
+    {{#each tasks}}
+        <li>
+            <p>{{task}}</p>
+            <input class="done" type="submit" value="">
+            <div class="box--clear-edit">
+                <input class="clear" type="submit" value="">
+                <input class="edit" type="submit" value="">
+            </div>
+        </li>
+    {{/each}}
+</ul>
