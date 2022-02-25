@@ -1,5 +1,4 @@
-// import themes from './themes.js';
-// console.log(themes);
+import { themes } from './themes.js';
 
 (() => {
     const app = {
@@ -12,36 +11,16 @@
         },
         cacheElements() {
             this.$input = document.querySelector('.input');
+            this.$switch = document.querySelector('#checkbox');
         },
         generateUi() {
-            const themes = [
-                {
-                    name: 'light',
-                    colors: [
-                        {name:'primary-pink', hex: '#cc38b8'},
-                        {name:'primary-yellow', hex: '#bd8c22'},
-                        {name:'primary-text', hex: '#FFFFFF'},
-                        {name:'primary-border', hex: '#8b267e'}
-                    ]
-                },
-                {
-                    name: 'dark',
-                    colors: [
-                        {name:'primary-pink', hex: '#00093a'},
-                        {name:'primary-yellow', hex: '#7556e4'},
-                        {name:'primary-text', hex: '#FFFFFF'},
-                        {name:'primary-border', hex: '#000000'}
-                    ]
-                }
-            ]
-            console.log(themes[0].colors[0].hex);
-
             const root = document.documentElement;
-            // root.style.setProperty('--primary-pink', '#cc38b8');
-            // root.style.setProperty('--primary-yellow', '#bd8c22');
-            // root.style.setProperty('--primary-text', '#FFFFFF');
-            // root.style.setProperty('--primary-black', '#FFF');
-            
+            this.$switch.addEventListener('click', () => {
+                root.style.setProperty('--primary-pink', '#00093a');
+                root.style.setProperty('--primary-yellow', '#7556e4');
+                root.style.setProperty('--primary-text', '#FFFFFF');
+                root.style.setProperty('--primary-black', '#000000');
+            })
         },
         generateRandomTask() {
             const tasksArray = [
