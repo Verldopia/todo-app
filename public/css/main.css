@@ -9,11 +9,16 @@
     scroll-behavior: smooth;
     cursor:default;
 }
-
+:root {
+    --primary-pink: #cc38b8;
+    --primary-yellow: #bd8c22;
+    --primary-text: #ffffff;
+    --primary-border: #8b267e;
+}
 body {
     font-size: 1.1rem;
     position: relative;
-    background: linear-gradient(#cc38b8, #bd8c22);
+    background: linear-gradient(var(--primary-pink), var(--primary-yellow));
     font-family: 'Roboto', sans-serif;
     overflow: hidden;
     max-width: 130rem;
@@ -27,8 +32,11 @@ ul {
 a > *,
 a {
     cursor: pointer;
-    color: #FFF;
+    color: var(--primary-text);
     text-decoration: none;
+}
+h2 {
+    font-size: 1rem;
 }
 
 /* Scrollbar */
@@ -40,15 +48,15 @@ a {
     border-radius: 1rem;
 }
 ::-webkit-scrollbar-thumb {
-    background: #b131a0; 
+    background: var(--primary-border); 
     border-radius: 1rem;
 }
 
 /* Header */
 
 header {
-    color: #fff;
-    box-shadow: 0 2px 10px #8b267e;
+    color: var(--primary-text);
+    box-shadow: 0 2px 10px var(--primary-border);
     padding: 1rem 1.5rem;
 }
 .header-box,
@@ -80,7 +88,7 @@ header {
 /* Navigation */
 
 .nav-container {
-    box-shadow: 2px 7px 10px -2px #8b267e;
+    box-shadow: 2px 7px 10px -2px var(--primary-border);
     position: sticky;
     top: 0;
     width: 25rem;
@@ -92,9 +100,9 @@ header {
 .larger--all {
     font-size: 1.3rem;
     padding: 2rem;
-    color: #f0f8ff;
+    color: var(--primary-text);
     margin-top: 0;
-    box-shadow: 0px 1px 10px -2px #8b267e;
+    box-shadow: 0px 1px 10px -2px var(--primary-border);
 }
 
 /* Main */
@@ -118,7 +126,7 @@ form,
 }
 .categories--btn {
     border: none;
-    background-color: #fff;
+    background-color: var(--primary-text);
     font-size: 1.1rem;
     padding: 0;
 }
@@ -131,7 +139,7 @@ li {
     margin: 0.5rem 0;
     padding-left: 1rem;
     border-radius: 0.2rem;
-    background-color: #fff;
+    background-color: var(--primary-text);
     transition: all ease 0.2s;
 }
 li p {
@@ -147,7 +155,7 @@ li p {
     max-height: calc(100vh - 10.2rem);
     border-radius: 0.5rem;
     overflow-y: scroll;
-    box-shadow: 2px 2px 10px -2px #8b267e;
+    box-shadow: 2px 2px 10px -2px var(--primary-border);
 }
 @media (min-width: 84rem) {
     .main-container {
@@ -162,7 +170,7 @@ li p {
     padding-left: 1rem;
     flex-grow: 2;
     border-radius: 0.2rem;
-    border: 1px solid #cc38b8;
+    border: 1px solid var(--primary-pink);
 }
 .input {
     cursor: auto;
@@ -172,7 +180,7 @@ li p {
 .clear,
 .edit {
     background-color: #3d3030;
-    color: #FFF;
+    color: var(--primary-text);
     height: 2.5rem;
     width: 2.5rem;
     border: none;
@@ -224,10 +232,10 @@ li:hover {
 }
 .logout:hover,
 .header-box--logo:hover {
-    background-color: #9c2c8d;
+    background-color: var(--primary-border);
 }
 .p--pending {
-    color: #fff;
+    color: var(--primary-text);
     border: none;
     padding: 0;
 }
