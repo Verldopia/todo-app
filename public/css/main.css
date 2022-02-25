@@ -76,6 +76,20 @@ header {
 .header-box--logo {
     width: 12rem;
 }
+.header-box--themes,
+.box-switch {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+.box-switch {
+    gap: 0.5rem;
+}
+.switch__select {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.2rem;
+}
 .header-img {
     height: 2rem;
     width: 2rem;
@@ -229,9 +243,9 @@ li:hover {
     border-radius: 2rem;
 }
 .logout {
-    padding: 1rem 2rem;
+    padding: 1rem;
+    margin: 0 1rem;
 }
-.logout:hover,
 .header-box--logo:hover {
     background-color: var(--primary-border);
 }

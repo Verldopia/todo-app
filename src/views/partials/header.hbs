@@ -4,14 +4,10 @@
             <div class="header-img"></div>
             <h2>Just Do IT!</h2>
         </a>
-  
-
-    <label for="dog-names">Choose a theme:</label>
-    <select name="dog-names" id="theme-switcher"></select>
-
-
-
-    
-        <a class="logout" href="index.html">Logout</a>
+        
+        <div class="header-box--themes">
+            {{> themeswitch}}
+            <a class="logout" href="index.html">Logout</a>
+        </div>
     </div>
 </header>

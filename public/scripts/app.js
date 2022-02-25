@@ -1,4 +1,5 @@
 import { themes } from "./themes.js";
+
 (() => {
     const app = {
         init() {
@@ -32,7 +33,7 @@ import { themes } from "./themes.js";
         },
         populateSelect() {
             const options = themes.map((theme) => {
-                return `<option value="${theme.slug}" ${theme.slug == this.activeThemeName ? "selected" : ""}>${theme.name}</option>`
+                return `<option value="${theme.slug}" ${theme.slug == this.activeThemeName ? "selected" : ""} class="switch__item">${theme.name}</option>`
             });
             this.$selectSwitch.innerHTML = options.join('');
         },

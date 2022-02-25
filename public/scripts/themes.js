@@ -1,6 +1,6 @@
 export const themes = [
     {
-        name: 'beach',
+        name: 'Beach',
         slug: 'beach',
         colors: [
             {name:'primary-top', hex: '#cc38b8'},
@@ -11,7 +11,7 @@ export const themes = [
         ]
     },
     {
-        name: 'midnight',
+        name: 'Midnight',
         slug: 'midnight',
         colors: [
             {name:'primary-top', hex: '#00093a'},
@@ -22,7 +22,7 @@ export const themes = [
         ]
     },
     {
-        name: 'toxic',
+        name: 'Toxic',
         slug: 'toxic',
         colors: [
             {name:'primary-top', hex: '#1A6566'},
@@ -33,7 +33,7 @@ export const themes = [
         ]
     },
     {
-        name: 'unicorn',
+        name: 'Unicorn',
         slug: 'unicorn',
         colors: [
             {name:'primary-top', hex: '#0011ff'},
