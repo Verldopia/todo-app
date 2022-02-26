@@ -16,7 +16,7 @@ export const themes = [
         slug: 'midnight',
         colors: [
             {name:'primary-top', hex: '#00093a'},
-            {name:'primary-bottom', hex: '#7556e4'},
+            {name:'primary-bottom', hex: '#aa61ee'},
             {name:'primary-text', hex: '#FFFFFF'},
             {name:'primary-border', hex: '#000000'},
             {name:'primary-buttons', hex: '#000000'},
@@ -27,11 +27,11 @@ export const themes = [
         name: 'Toxic',
         slug: 'toxic',
         colors: [
-            {name:'primary-top', hex: '#1A6566'},
-            {name:'primary-bottom', hex: '#5D9A66'},
+            {name:'primary-top', hex: '#196649'},
+            {name:'primary-bottom', hex: '#b4b366'},
             {name:'primary-text', hex: '#ffff00'},
             {name:'primary-border', hex: '#21445B'},
-            {name:'primary-buttons', hex: '#45214A'},
+            {name:'primary-buttons', hex: '#093211'},
             {name:'switch-img', hex: 'url(../images/toxic.png)'},
         ]
     },

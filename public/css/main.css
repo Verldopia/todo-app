@@ -12,6 +12,7 @@
     --primary-border: #8b267e;
     --primary-buttons: #181818;
     --switch-img: url(../images/beach.png);
+    /* color: #094211; */
 }
 * {
     scroll-behavior: smooth;
