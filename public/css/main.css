@@ -16,6 +16,7 @@
     --primary-text: #FFFFFF;
     --primary-border: #8b267e;
     --primary-buttons: #181818;
+    --switch-img: url(../images/beach.png);
 }
 body {
     font-size: 1.1rem;
@@ -59,7 +60,6 @@ h2 {
 header {
     color: var(--primary-text);
     box-shadow: 0 2px 10px var(--primary-border);
-    padding: 1rem 1.5rem;
 }
 .header-box,
 .header-box--logo {
@@ -92,10 +92,10 @@ header {
     border-radius: 0.2rem;
 }
 .header-img {
-    height: 2rem;
-    width: 2rem;
-    padding: 1rem 1rem 1rem 0;
-    background-image: url(../images/logo.png);
+    height: 4rem;
+    width: 4rem;
+    padding-right: 1rem;
+    background-image: var(--switch-img);
     background-position: left;
     background-repeat: no-repeat;
     background-size: 60%;
@@ -242,11 +242,12 @@ li:hover {
 .header-box--logo {
     transition: ease all 0.2s;
     border-radius: 2rem;
+    margin: 1rem 0;
 }
 .logout {
     padding: 1rem;
-    margin: 0 1rem;
 }
+.logout:hover,
 .header-box--logo:hover {
     background-color: var(--primary-border);
 }
