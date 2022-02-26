@@ -1,7 +1,7 @@
 /* Imports */
 
-@import url("reset.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 
 /* Global scopes */
 
@@ -45,6 +45,12 @@ a {
 }
 h2 {
     font-size: 1rem;
+}
+h1,
+h3 {
+    font-family: 'Cookie', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 100;
 }
 
 /* Scrollbar */
@@ -132,7 +138,6 @@ header {
     cursor: pointer;
 }
 .larger--all {
-    font-size: 1.3rem;
     padding: 2rem;
     color: var(--primary-text);
     margin-top: 0;
@@ -240,13 +245,28 @@ li p {
     align-items: center;
     margin: 0 2rem;
 }
+.submit__category,
+.edit,
+.clear,
+.done {
+    background-image: url(../images/add-list--white.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.submit__category {
+    background-size: 50%;
+}
+.submit__task {
+    width: 9rem;
+    color: #FFFFFF;
+    background-color: var(--primary-buttons);
+    font-size: 1.7rem;
+}
 .done {
     position: absolute;
     left: -3rem;
     background-color: #009c15;
     background-image: url(../images/checkmark-circle.svg);
-    background-position: center;
-    background-repeat: no-repeat;
 }
 .edit,
 .clear {
@@ -254,12 +274,7 @@ li p {
     right: 0;
     background-image: url(../images/delete--white.png);
     background-size: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
     background-color: #ad0808;
-}
-.clear {
-    z-index: 10;
 }
 .edit {
     background-image: url(../images/edit--white.png);
@@ -324,5 +339,6 @@ li:hover {
 .clear:hover,
 .submit:hover,
 .edit:hover {
-    opacity: 90%;
+    opacity: 70%;
+    
 }
