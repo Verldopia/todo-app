@@ -11,8 +11,8 @@
     --primary-text: #FFFFFF;
     --primary-border: #8b267e;
     --primary-buttons: #181818;
+    --primary-nav__bg: rgba(255, 255, 255, 0.2);
     --switch-img: url(../images/beach.png);
-    /* color: #094211; */
 }
 * {
     scroll-behavior: smooth;
@@ -32,6 +32,10 @@ h3,
 ul {
     padding: 1rem 2rem;
     text-decoration: none;
+}
+ul > li {
+    color: var(--primary-text);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 a > *,
 a {
@@ -93,6 +97,7 @@ header {
     border-radius: 0.2rem;
     border-left: 2px solid var(--primary-buttons);
     border-bottom: 2px solid var(--primary-buttons);
+    background-color: rgba(0, 0, 0, 0.2);
     gap: 0;
 }
 .box-switch label {
@@ -113,6 +118,7 @@ header {
 
 .nav-container {
     box-shadow: 2px 7px 10px -2px var(--primary-border);
+    background-color: var(--primary-nav__bg);
     position: sticky;
     top: 0;
     width: 25rem;
@@ -156,7 +162,8 @@ form {
 }
 .categories--btn {
     border: none;
-    background-color: #FFFFFF;
+    color: var(--primary-text);
+    background: none;
     font-size: 1.1rem;
     padding: 0;
 }
@@ -186,14 +193,12 @@ li p {
     border-radius: 0.5rem;
     overflow-y: scroll;
     box-shadow: 2px 2px 10px -2px var(--primary-border);
+    background-color: var(--primary-nav__bg);
 }
-@media (min-width: 84rem) {
+@media (min-width: 92rem) {
     .main-container {
         margin: 2rem auto;
     }
-}
-.input {
-    height: calc(2.5rem - 2px);
 }
 .input,
 .p--pending {
@@ -203,7 +208,10 @@ li p {
     border: 1px solid var(--primary-top);
 }
 .input {
+    height: calc(2.5rem - 2px);
     cursor: auto;
+    font-size: 1rem;
+    color: var(--primary-top);
 }
 .switch__select,
 .submit,

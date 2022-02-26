@@ -51,8 +51,6 @@ export const home = (req, res) => {
             task: "Create a new portfolio site"
         },
     ]
-    const text = 'Maximus Yeetus but in italic...';
-    const textBTN = 'Maximus Yeetus but it\'s a button';
     
-    res.render('home', {categories, tasks, tasksDone, text, textBTN})
+    res.render('home', {categories, tasks, tasksDone})
 };

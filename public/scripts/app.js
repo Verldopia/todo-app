@@ -33,12 +33,12 @@ import { themes } from "./themes.js";
         },
         populateSelect() {
             const options = themes.map((theme) => {
-                return `<option value="${theme.slug}" ${theme.slug == this.activeThemeName ? "selected" : ""} class="switch__item">${theme.name}</option>`
+                return `<option value="${theme.slug}" ${theme.slug === this.activeThemeName ? "selected" : ""} class="switch__item">${theme.name}</option>`
             });
             this.$selectSwitch.innerHTML = options.join('');
         },
         changeDOMTheme() {
-            const activeTheme = this.themes.find((theme) => theme.slug == this.activeThemeName);
+            const activeTheme = this.themes.find((theme) => theme.slug === this.activeThemeName);
 
             activeTheme.colors.forEach((color) => {
                 this.root.style.setProperty(`--${color.name}`, color.hex);
