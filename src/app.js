@@ -9,7 +9,7 @@ import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
 import entities from "./models/index.js";
 import { ppid } from "process";
-import { getTask, postTask, deleteTask, updateTask } from "./controllers/api/task.js"
+import { getObject, postObject, deleteObject, updateObject } from "./controllers/api/task.js"
 
 const app = express();
 app.use(express.static('public'));
@@ -30,11 +30,10 @@ app.set("views", path.join(SOURCE_PATH, "views"));
 app.get('/', home);
 
 // Task routing
-app.get('/api/task', getTask);
-app.post('/api/task', postTask);
-app.delete('/api/task/:id', deleteTask);
-app.put('/api/task', updateTask);
-
+app.get('/api/task', (req, res, next) => getObject("Task", req, res, next));
+app.post('/api/task', (req, res, next) => postObject("Task", req, res, next));
+app.delete('/api/task/:id', (req, res, next) => deleteObject("Task", req, res, next));
+app.put('/api/task', (req, res, next) => updateObject("Task", req, res, next));
 
 // Create database connection and start listening
 
