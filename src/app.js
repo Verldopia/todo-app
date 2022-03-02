@@ -30,10 +30,10 @@ app.set("views", path.join(SOURCE_PATH, "views"));
 app.get('/', home);
 
 // Task routing
-// app.get('/api/task', getTask);
-// app.post('/api/task', postTask);
-// app.delete('/api/task/:id', deleteTask);
-// app.put('/api/task', updateTask);
+app.get('/api/task', getTask);
+app.post('/api/task', postTask);
+app.delete('/api/task/:id', deleteTask);
+app.put('/api/task', updateTask);
 
 
 // Create database connection and start listening
