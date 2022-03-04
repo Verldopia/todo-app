@@ -1,14 +1,14 @@
 <div class="box-clear">
     <h3 class="p--pending">You have {{userData.tasks.length}} pending tasks</h3>
-    <input class="submit submit--clear" type="submit" value="Clear All">
+    {{#button "DELETE" "/deleteAllTasks" "submit submit--clear" "submit" "Clear All"}}{{/button}}
 </div>
 <ul class="tasks">
     {{#each userData.tasks}}
         <li>
             <p>{{name}}</p>
-            <input class="done" type="submit" value="">
-            <input class="edit" type="submit" value="">
-            <input class="clear" type="submit" value="">
+            {{#button "PUT" "/finishTask" "done" "submit"}}{{/button}}
+            {{#button "PUT" "/editTask" "edit" "submit"}}{{/button}}
+            {{#button "DELETE" "/deleteTask" "clear" "submit"}}{{/button}}
         </li>
     {{/each}}
 </ul>

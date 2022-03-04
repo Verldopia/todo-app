@@ -149,7 +149,7 @@ header {
 main {
     display: flex;
 }
-form {
+.input__form {
     align-items: center;
     display: flex;
     gap: 0.5rem;
@@ -232,6 +232,9 @@ li p {
     transition: all ease 0.2s;
     cursor: pointer;
 }
+.submit--clear {
+    width: 12rem;
+}
 .switch__select {
     background-color: var(--primary-buttons);
     border-radius: 0.2rem 0.2rem 0 0;
@@ -280,10 +283,10 @@ li p {
     background-image: url(../images/edit--white.png);
     background-color: var(--primary-buttons);
 }
-li:hover > .done {
+li:hover > form .done {
     left: 0;
 }
-li:hover > .edit {
+li:hover > form .edit {
     right: 3rem;
 }
 li:hover {
@@ -307,7 +310,6 @@ li:hover {
     border: none;
     padding: 0;
 }
-.submit--clear,
 .switch__select {
     width: 100%;
     max-width: 12rem;

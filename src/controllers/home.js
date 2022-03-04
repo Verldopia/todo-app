@@ -22,7 +22,7 @@ export const homePostTask = async (req, res, next) => {
     // validate incoming body
     if(!req.body.userId) throw new Error('Please provide a USER ID');
     if(!req.body.name) throw new Error('Please provide a task');
-
+    
     // get the repositories
     const userRepository = getConnection().getRepository('User');
     const taskRepository = getConnection().getRepository('Task');
@@ -98,3 +98,26 @@ export const homePostCategory = async (req, res, next) => {
     }
     }
     
+  // Delete Task
+export const homeDeleteTask = async (req, res, next) => {
+  try {
+  } catch(e) {
+      next(e.message);
+  }
+};
+
+// Edit Task
+export const homeEditTask = async (req, res, next) => {
+  try {
+  } catch(e) {
+      next(e.message);
+  }
+};
+
+// Finish Task
+export const homeFinishTask = async (req, res, next) => {
+  try {
+  } catch(e) {
+      next(e.message);
+  }
+};

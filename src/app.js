@@ -3,7 +3,13 @@ import  "dotenv/config";
 import * as path from "path";
 import { create } from "express-handlebars";
 import { SOURCE_PATH } from "./consts.js";
-import { home, homePostTask, homePostCategory } from "./controllers/home.js";
+import { 
+  home, 
+  homePostTask, 
+  homePostCategory, 
+  homeDeleteTask,
+  homeEditTask,
+  homeFinishTask } from "./controllers/home.js";
 import HandlebarsHelpers from "./lib/HandlebarsHelpers.js";
 import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
@@ -31,6 +37,9 @@ app.set("views", path.join(SOURCE_PATH, "views"))
 app.get('/', home);
 app.post('/postCategory', homePostCategory);
 app.post('/postTask', homePostTask);
+app.delete('/deleteTask', homeDeleteTask);
+app.put('/editTask', homeEditTask);
+app.put('/finishTask', homeFinishTask);
 
 
 // Task routing

@@ -4,7 +4,7 @@
         {{#each userData.categories}}
             <li class="box-categories__item">
                 <button class="categories--btn" href="{{url}}">{{name}}</button>
-                <input class="done clear" type="submit" value="">
+                {{#button "DELETE" "/deleteTask" "done clear" "submit"}}{{/button}}
             </li>
         {{/each}}
     </ul>

@@ -12,26 +12,11 @@ export default new EntitySchema ({
         },
         name: {
             type: "varchar"
-        },
-        lastName: {
-            type: "varchar"
         }
     },
     relations: {
-        user_meta: {
-            target: "UserMeta",
-            type: "one-to-one",
-            cascade: true,
-            joinColumn: true
-        },
         tasks: {
             target: "Task",
-            type: "many-to-many",
-            cascade: true,
-            joinTable: true,
-        },
-        tasks_done: {
-            target: "TaskDone",
             type: "many-to-many",
             cascade: true,
             joinTable: true,

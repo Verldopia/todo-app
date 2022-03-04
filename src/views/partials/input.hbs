@@ -1,6 +1,6 @@
 
 <h1 class="larger--all">We've got things to do, {{userData.name}}!</h1>
-<form method="POST">
+<form class="input__form" method="POST">
     <input type="hidden" name="userId" value="{{userData.id}}">
     <input type="text" name="name" class="input" id="todo" placeholder="Run a marathon" autocomplete="off">
     <button formaction="/postTask" type="submit" class="submit submit__task">+</button>
