@@ -8,8 +8,10 @@ import {
   homePostTask, 
   homePostCategory, 
   homeDeleteTask,
+  homeDeleteAllTasks,
   homeEditTask,
-  homeFinishTask } from "./controllers/home.js";
+  homeFinishTask 
+} from "./controllers/home.js";
 import HandlebarsHelpers from "./lib/HandlebarsHelpers.js";
 import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
@@ -38,6 +40,7 @@ app.get('/', home);
 app.post('/postCategory', homePostCategory);
 app.post('/postTask', homePostTask);
 app.delete('/deleteTask', homeDeleteTask);
+app.delete('/deleteAllTasks', homeDeleteAllTasks);
 app.put('/editTask', homeEditTask);
 app.put('/finishTask', homeFinishTask);
 

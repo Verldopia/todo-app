@@ -106,6 +106,14 @@ export const homeDeleteTask = async (req, res, next) => {
   }
 };
 
+// Delete All Tasks
+export const homeDeleteAllTasks = async (req, res, next) => {
+  try {
+  } catch(e) {
+      next(e.message);
+  }
+};
+
 // Edit Task
 export const homeEditTask = async (req, res, next) => {
   try {
