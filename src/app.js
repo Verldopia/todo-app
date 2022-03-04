@@ -39,7 +39,7 @@ app.set("views", path.join(SOURCE_PATH, "views"))
 app.get('/', home);
 app.post('/postCategory', homePostCategory);
 app.post('/postTask', homePostTask);
-app.delete('/deleteTask', homeDeleteTask);
+// app.delete('/deleteTask', homeDeleteTask);
 app.delete('/deleteAllTasks', homeDeleteAllTasks);
 app.put('/editTask', homeEditTask);
 app.put('/finishTask', homeFinishTask);

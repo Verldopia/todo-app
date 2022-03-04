@@ -7,7 +7,7 @@
     {{#each userData.tasks}}
         <li>
             <p>{{name}}</p>
-            {{#button "POST" "/deleteTask" "done clear" "submit"}}{{/button}}
+            {{#button "POST" "/api/task/:id" "done clear" "submit"}}{{/button}}
         </li>
     {{/each}}
 </ul>
