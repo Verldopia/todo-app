@@ -17,7 +17,12 @@ import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
 import entities from "./models/index.js";
 import { ppid } from "process";
-import { getObject, postObject, deleteObject, updateObject } from "./controllers/api/object.js"
+import { 
+  getObject, 
+  postObject, 
+  deleteObject, 
+  updateObject 
+} from "./controllers/api/object.js"
 
 const app = express();
 app.use(express.static('public'))
@@ -39,7 +44,7 @@ app.set("views", path.join(SOURCE_PATH, "views"))
 app.get('/', home);
 app.post('/postCategory', homePostCategory);
 app.post('/postTask', homePostTask);
-// app.delete('/deleteTask', homeDeleteTask);
+app.delete('/deleteTask', homeDeleteTask);
 app.delete('/deleteAllTasks', homeDeleteAllTasks);
 app.put('/editTask', homeEditTask);
 app.put('/finishTask', homeFinishTask);
@@ -47,9 +52,9 @@ app.put('/finishTask', homeFinishTask);
 
 // Task routing
 app.get('/api/task', (req, res, next) => getObject("User", req, res, next));
-app.post('/api/task', (req, res, next) => postObject("User", req, res, next));
-app.delete('/api/task/:id', (req, res, next) => deleteObject("User", req, res, next));
-app.put('/api/task', (req, res, next) => updateObject("User", req, res, next));
+app.post('/api/task', (req, res, next) => postObject("Task", req, res, next));
+app.delete('/api/task/:id', (req, res, next) => deleteObject("Task", req, res, next));
+app.put('/api/task', (req, res, next) => updateObject("Task", req, res, next));
 
 
 // Create database connection and start listening
