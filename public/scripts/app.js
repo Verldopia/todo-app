@@ -8,7 +8,7 @@ import { themes } from "./themes.js";
             this.root = document.documentElement;
             
             // Set active theme get from local storage
-            this.activeThemeName = localStorage.getItem("activeThemeName") || "light";
+            this.activeThemeName = localStorage.getItem("activeThemeName");
             this.cacheElements();
             this.registerListeners();
 
@@ -44,7 +44,6 @@ import { themes } from "./themes.js";
                 this.root.style.setProperty(`--${color.name}`, color.hex);
             });
         }
-        
     };
     app.init();
 })()

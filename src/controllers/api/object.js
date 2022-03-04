@@ -10,7 +10,8 @@ export const postObject = async (entityName, req, res, next) => {
 
         // get the repository from entityName
         const repository = getConnection().getRepository(entityName);
-        
+        const taskRepository = getConnection().getRepository('Task');
+ 
         // Get the entityName (if this one exists)
         const object = await repository.findOne({
             where: { name: req.body.name }
@@ -23,7 +24,15 @@ export const postObject = async (entityName, req, res, next) => {
         }
 
         // save the entityName in repository
-        const insertedEntityName = await repository.save(req.body);
+        const insertedEntityName = await repository.save({
+            ...req.body,
+            tasks: await taskRepository.find(),
+            user_meta: {
+                address: "Mariakerke",
+                zipCode: "9030",
+                city: "Gent"
+            }
+        });
 
         res.status(200).json({ status: `Posted ${readableEntityName} with id: ${insertedEntityName.id}.` });
     } catch(e) {
@@ -35,9 +44,8 @@ export const getObject = async (entityName, req, res, next) => {
     try {
         // get the repository from entityName
         const repository = getConnection().getRepository(entityName);
-        const object = await repository.find();
 
-        res.status(200).json(object);
+        res.status(200).json(await repository.find({ relations: ["user_meta", "tasks"] }));
     } catch(e) {
         next(e.message);
     }

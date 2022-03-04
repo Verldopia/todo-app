@@ -2,15 +2,21 @@ import typeorm from "typeorm";
 
 const { EntitySchema } = typeorm;
 export default new EntitySchema ({
-    name: "Task",
-    tableName: "tasks",
+    name: "UserMeta",
+    tableName: "user_meta",
     columns: {
         id: {
             primary: true,
             type: "int",
             generated: true
         },
-        name: {
+        address: {
+            type: "varchar"
+        },
+        zipCode: {
+            type: "varchar"
+        },
+        city: {
             type: "varchar"
         }
     }

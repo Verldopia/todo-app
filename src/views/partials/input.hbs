@@ -1,7 +1,8 @@
 
 <h1 class="larger--all">We've got things to do!</h1>
-<form id="todoForm">
-    <input class="input" id="todo" type="text" name="todo" placeholder="Run a marathon" autocomplete="off">
-    <button class="submit submit__task" id="todoSubmit" type="button">+</button>
-    <button class="submit submit__category" id="todoSubmit" type="button"></button>
+<form method="post" action="/postTask" id="todoForm">
+    <input type="hidden" name="userId" value="{{userData.id}}">
+    <input type="text" name="name" class="input" id="todo" placeholder="Run a marathon" autocomplete="off">
+    <button type="submit" class="submit submit__task" id="todoSubmit">+</button>
+    <button type="submit" class="submit submit__category" id="todoSubmit"></button>
 </form>
