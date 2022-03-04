@@ -17,12 +17,7 @@ import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
 import entities from "./models/index.js";
 import { ppid } from "process";
-import { 
-  getObject, 
-  postObject, 
-  deleteObject, 
-  updateObject 
-} from "./controllers/api/object.js"
+import { getObject, postObject, deleteObject, updateObject } from "./controllers/api/object.js"
 
 const app = express();
 app.use(express.static('public'))

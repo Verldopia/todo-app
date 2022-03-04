@@ -100,26 +100,10 @@ export const homePostCategory = async (req, res, next) => {
     
   // Delete Task
 export const homeDeleteTask = async (req, res, next) => {
-    try {
-        // Set name for output
-        const readableEntityName = entityName.toLowerCase();
-
-        // Catch the id from params
-        const { id } = req.params;
-        console.log(id);
-        // Validate incoming variables
-        if(!id) { throw new Error('Please specify an id to remove.') }
-        
-        // Get the requested repository
-        const repository = getConnection().getRepository(entityName);
-        
-        // Delete the request
-        await repository.remove({ id });
-        
-        res.status(200).json({ status: `Deleted ${readableEntityName} with id ${id}` });
-    } catch(e) {
-        next(e.message);
-    }
+  try {
+  } catch(e) {
+      next(e.message);
+  }
 };
 
 // Delete All Tasks

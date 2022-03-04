@@ -7,7 +7,7 @@ export const postObject = async (entityName, req, res, next) => {
 
         // validate incoming body
         if(!req.body.name) throw new Error('Enter a name!');
-        console.log(req.body);
+
         // get the repository from entityName
         const repository = getConnection().getRepository(entityName);
         const taskRepository = getConnection().getRepository('Task');
