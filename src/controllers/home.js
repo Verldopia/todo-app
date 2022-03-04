@@ -7,7 +7,7 @@ export const home = async (req, res, next) => {
   const userRepository = getConnection().getRepository('User');
   const userData = await userRepository.findOne({ 
     where: { id: 1 },
-    relations: ["tasks"] 
+    relations: ["tasks", "categories"]
   });
 
 // Render to homepage
@@ -16,11 +16,12 @@ export const home = async (req, res, next) => {
   });
 }
 
+// Post Tasks
 export const homePostTask = async (req, res, next) => {
   try {
     // validate incoming body
     if(!req.body.userId) throw new Error('Please provide a USER ID');
-    if(!req.body.name) throw new Error('Please provide an task');
+    if(!req.body.name) throw new Error('Please provide a task');
 
     // get the repositories
     const userRepository = getConnection().getRepository('User');
@@ -55,3 +56,45 @@ export const homePostTask = async (req, res, next) => {
     next(e.message);
 }
 }
+
+// Post Categories
+export const homePostCategory = async (req, res, next) => {
+    try {
+        // validate incoming body
+        if(!req.body.userId) throw new Error('Please provide a USER ID');
+        if(!req.body.name) throw new Error('Please provide a category');
+    
+        // get the repositories
+        const userRepository = getConnection().getRepository('User');
+        const categoryRepository = getConnection().getRepository('Category');
+    
+        // Search if user is same as userId
+        const user = await userRepository.findOneOrFail({
+          where: { id: parseInt(req.body.userId) },
+          relations: ["categories"]
+        });
+    
+        // Search if category already exists
+        let category = await categoryRepository.findOne({
+          where: { name: req.body.name }
+        });
+    
+        // If category does not exists
+        if(!category) {
+          category = await categoryRepository.save({ name: req.body.name });
+        }
+        const hasCategory = user.categories.filter((cat) => cat.name === req.body.name).length > 0;
+    
+        // If there's no category
+        if(!hasCategory) {
+          user.categories.push(category);
+          await userRepository.save(user);
+        }
+    
+        // Render homepage again
+        res.redirect('/');
+    } catch(e) {
+        next(e.message);
+    }
+    }
+    

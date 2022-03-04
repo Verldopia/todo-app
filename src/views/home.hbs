@@ -1,5 +1,4 @@
 {{> header}}
-
 <main>
 {{> navigation}}
     {{> btn-totop}}
@@ -9,48 +8,3 @@
         {{> tasks-done}}
     </div>
 </main>
-
-
-
-{{!-- {{#with person}} 
-    {{#if data.isAGhost}}
-        Can't find this person...
-    {{else}}
-        Welcome to the internet,
-    {{#with data}}
-        {{#bold}} {{firstname}} {{lastname}} {{/bold}}
-    {{/with}}!
-        <br>
-        <br>
-        My interests are:
-        <ul>
-            {{#each interests}}
-            <li>{{name}}</li>
-            {{/each}}
-        </ul>
-    {{/if}}
-{{/with}}
-<br>
-
-{{#italic}} {{text}} {{/italic}}
-
-<br>
-<br>
-
-{{#button "button" ""}} {{textBTN}} {{/button}}
-
-<br>
-<br>
-
-{{#customIf true}}
-    Dit is waar!
-    {{else}}
-    Dit is niet waar!
-{{/customIf}}
-
-{{#sum 40 20}}{{/sum}}
-{{#bold}}text{{/bold}}
-
-{{#button "button" "first"}}first button{{/button}}
-{{#button "button" "second"}}second button{{/button}}
-{{#button "button" "thirs"}}third button{{/button}} --}}

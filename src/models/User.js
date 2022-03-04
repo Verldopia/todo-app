@@ -29,6 +29,18 @@ export default new EntitySchema ({
             type: "many-to-many",
             cascade: true,
             joinTable: true,
+        },
+        tasks_done: {
+            target: "TaskDone",
+            type: "many-to-many",
+            cascade: true,
+            joinTable: true,
+        },
+        categories: {
+            target: "Category",
+            type: "many-to-many",
+            cascade: true,
+            joinTable: true,
         }
     }
 })
