@@ -1,9 +1,9 @@
 <nav class="nav-container">
     <h3 class="larger--all">Categories</h3>
     <ul class="box-categories">
-        {{#each userData.categories}}
+        {{#each categoryData}}
             <li class="box-categories__item">
-                <button class="categories--btn" href="{{url}}">{{name}}</button>
+                <button class="categories--btn" href="{{slug}}">{{title}}</button>
                 {{#button "DELETE" "/api/task/:id" "done clear" "submit"}}{{/button}}
             </li>
         {{/each}}

@@ -37,8 +37,8 @@ app.set("views", path.join(SOURCE_PATH, "views"))
 
 // App Routing
 app.get('/', home);
-// app.post('/postCategory', homePostCategory);
-// app.post('/postTask', homePostTask);
+app.post('/postCategory', homePostCategory);
+app.post('/postTask', homePostTask);
 // app.delete('/deleteTask', homeDeleteTask);
 // app.delete('/deleteAllTasks', homeDeleteAllTasks);
 // app.put('/editTask', homeEditTask);

@@ -1,14 +1,16 @@
 <div class="box-clear">
-    <h3 class="p--pending">You have {{userData.tasks.length}} pending tasks</h3>
+    <h3 class="p--pending">You have pending tasks</h3>
     {{#button "DELETE" "/deleteAllTasks" "submit submit--clear" "submit" "Clear All"}}{{/button}}
 </div>
 <ul class="tasks">
-    {{#each userData.tasks}}
-        <li>
-            <p>{{name}}</p>
-            {{#button "PUT" "/finishTask" "done" "submit"}}{{/button}}
-            {{#button "PUT" "/editTask" "edit" "submit"}}{{/button}}
-            {{#button "DELETE" "/deleteTask" "clear" "submit"}}{{/button}}
-        </li>
+    {{#each taskData}}
+        {{#unless checked}}
+            <li>
+                <p>{{title}}</p>
+                {{#button "PUT" "/finishTask" "done" "submit"}}{{/button}}
+                {{#button "PUT" "/editTask" "edit" "submit"}}{{/button}}
+                {{#button "DELETE" "/deleteTask" "clear" "submit"}}{{/button}}
+            </li>
+        {{/unless}}
     {{/each}}
 </ul>

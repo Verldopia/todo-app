@@ -1,13 +1,15 @@
 <div class="box-clear">
-    <h3 class="p--pending">You have {{userData.tasks.length}} finished tasks</h3>
+    <h3 class="p--pending">You have {{taskData.length}} finished tasks</h3>
     {{#button "DELETE" "/deleteAllTasks" "submit submit--clear" "submit" "Clear All"}}{{/button}}
 </div>
 
 <ul class="tasks--done  box--bottom">
-    {{#each userData.tasks}}
-        <li>
-            <p>{{name}}</p>
-            {{#button "POST" "/api/task/:id" "done clear" "submit"}}{{/button}}
-        </li>
+    {{#each taskData}}
+        {{#if checked}}
+            <li>
+                <p>{{title}}</p>
+                {{#button "POST" "/api/task/:id" "done clear" "submit"}}{{/button}}
+            </li>
+        {{/if}}
     {{/each}}
 </ul>

@@ -18,7 +18,7 @@ export default new EntitySchema ({
         }
     },
     relations: {
-        task: {
+        tasks: {
             target: "Task",
             type: "one-to-many",
             cascade: true,

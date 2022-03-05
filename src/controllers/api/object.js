@@ -6,14 +6,14 @@ export const postObject = async (entityName, req, res, next) => {
         const readableEntityName = entityName.toLowerCase();
 
         // validate incoming body
-        if(!req.body.name) throw new Error('Enter a name!');
+        if(!req.body.title) throw new Error('Enter a name!');
 
         // get the repository from entityName
         const repository = getConnection().getRepository(entityName);
         
         // Get the entityName (if this one exists)
         const object = await repository.findOne({
-            where: { name: req.body.name }
+            where: { title: req.body.title }
         })
 
         // If entityName already exists
