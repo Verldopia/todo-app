@@ -3,14 +3,14 @@ import  "dotenv/config";
 import * as path from "path";
 import { create } from "express-handlebars";
 import { SOURCE_PATH } from "./consts.js";
-import { 
-  home, 
-  homePostTask, 
-  homePostCategory, 
+import {
+  home,
+  homePostTask,
+  homePostCategory,
   homeDeleteTask,
   homeDeleteAllTasks,
   homeEditTask,
-  homeFinishTask 
+  homeFinishTask
 } from "./controllers/home.js";
 import HandlebarsHelpers from "./lib/HandlebarsHelpers.js";
 import bodyParser from "body-parser";

@@ -88,36 +88,61 @@ header {
 .header-box--logo {
     width: 12rem;
 }
-.header-box--themes,
-.box-switch {
+.header-box--logout {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
     align-items: center;
 }
-.box-switch {
-    position: absolute;
-    left: 2rem;
-    bottom: 2rem;
-    width: calc(100% - 4rem);
-    border-radius: 0.2rem;
-    border-left: 2px solid var(--primary-buttons);
-    border-bottom: 2px solid var(--primary-buttons);
-    background-color: rgba(0, 0, 0, 0.2);
-    gap: 0;
+
+/* Theme switch */
+
+.switch-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 10rem;
+    height: 4.5rem;
+    border: 1px solid green;
+    overflow: hidden;
 }
-.box-switch label {
+.switch__label {
     color: var(--primary-text);
     padding: 0 1rem;
 }
-.header-img {
-    height: 4rem;
-    width: 4rem;
-    padding-right: 1rem;
+.switch__img {
     background-image: var(--switch-img);
-    background-position: left;
     background-repeat: no-repeat;
-    background-size: 60%;
+    background-position: center;
+    background-size: 80%;
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem;
+    border-radius: 2rem;
+}
+.active {
+    animation: switch 1.5s;
+}
+@keyframes switch {
+    0% {
+        margin-left: 0;
+    }
+    50% {
+        margin-left: 15rem;
+    }
+    55% {
+        margin-top: 3rem;
+        opacity: 0;
+    }
+    60% {
+        margin-left: -15rem;
+    }
+    100% {
+        margin-left: 0;
+        opacity: 1;
+    }
 }
 
 /* Navigation */
@@ -218,7 +243,6 @@ li p {
     font-size: 1rem;
     color: var(--primary-top);
 }
-.switch__select,
 .submit,
 .done,
 .clear,
@@ -234,13 +258,6 @@ li p {
 }
 .submit--clear {
     width: 12rem;
-}
-.switch__select {
-    background-color: var(--primary-buttons);
-    border-radius: 0.2rem 0.2rem 0 0;
-    line-height: 10rem;
-    padding: 0.5rem;
-    font-size: 1rem;
 }
 .box-clear {
     display: flex;
@@ -310,11 +327,6 @@ li:hover {
     border: none;
     padding: 0;
 }
-.switch__select {
-    width: 100%;
-    max-width: 12rem;
-    margin-right: 1px;
-}
 
 /* Button to top  */
 
@@ -342,5 +354,4 @@ li:hover {
 .submit:hover,
 .edit:hover {
     opacity: 70%;
-    
 }

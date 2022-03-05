@@ -7,41 +7,35 @@ import { themes } from "./themes.js";
             this.themes = themes;
             this.root = document.documentElement;
             
-            // Set active theme get from local storage
-            this.activeThemeName = localStorage.getItem("activeThemeName");
             this.cacheElements();
             this.registerListeners();
-
-            // Populate dropdown box
-            this.populateSelect();
-
-            // Change theme, based on active theme
             this.changeDOMTheme();
         },
         cacheElements() {
-            this.$selectSwitch = document.querySelector('#theme-switcher');
+            this.$switch = document.querySelector('.switch__img');
         },
         registerListeners() {
-            this.$selectSwitch.addEventListener("change", (e) => {
-                // Change active theme here
-                this.activeThemeName = e.target.value;
+            let i = 1;
+            this.$switch.addEventListener('click', () => {
+                // Loop through themes
+                this.activeThemeName = this.themes[i < this.themes.length ? i++ : i = 0];
+
+                // Set active state and delete after 1.5seconds
+                this.$switch.classList.add("active");
+                setTimeout(() => {
+                    this.$switch.classList.remove("active")
+                }, 1500)
+
                 // Change in local storage
-                localStorage.setItem("activeThemeName", e.target.value);
-                // Other theme, so change the dom colors
+                localStorage.setItem("activeThemeName", this.activeThemeName.slug);
                 this.changeDOMTheme();
             });
         },
-        populateSelect() {
-            const options = themes.map((theme) => {
-                return `<option value="${theme.slug}" ${theme.slug === this.activeThemeName ? "selected" : ""} class="switch__item">${theme.name}</option>`
-            });
-            this.$selectSwitch.innerHTML = options.join('');
-        },
         changeDOMTheme() {
-            const activeTheme = this.themes.find((theme) => theme.slug === this.activeThemeName);
+            const activeTheme = this.themes.find((theme) => theme.slug === localStorage.getItem("activeThemeName"));
 
-            activeTheme.colors.forEach((color) => {
-                this.root.style.setProperty(`--${color.name}`, color.hex);
+            activeTheme.items.forEach((item) => {
+                this.root.style.setProperty(`--${item.name}`, item.var);
             });
         }
     };

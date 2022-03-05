@@ -103,6 +103,7 @@ export const homeEditTask = async (req, res, next) => {
 // Finish Task
 export const homeFinishTask = async (req, res, next) => {
   try {
+    console.log('init');
     const entityName = "Task";
     // Set name for output
     const readableEntityName = entityName.toLowerCase();
