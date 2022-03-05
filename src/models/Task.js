@@ -10,8 +10,21 @@ export default new EntitySchema ({
             type: "int",
             generated: true
         },
-        name: {
+        title: {
             type: "varchar"
+        },
+        checked: {
+            type: "boolean"
+        },
+    },
+    relations: {
+        category: {
+            target: "Category",
+            type: "many-to-one",
+            joinColumn: {
+                name: "category_id" 
+            },
+            inverseSide: "tasks"
         }
     }
 })

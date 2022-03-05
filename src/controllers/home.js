@@ -4,10 +4,9 @@ import { getConnection } from "typeorm";
 
 export const home = async (req, res, next) => {
   // Get the useritems
-  const userRepository = getConnection().getRepository('User');
+  const userRepository = getConnection().getRepository('Task');
   const userData = await userRepository.findOne({ 
-    where: { id: 1 },
-    relations: ["tasks", "categories"]
+    where: { id: 1 }
   });
 
 // Render to homepage

@@ -37,16 +37,16 @@ app.set("views", path.join(SOURCE_PATH, "views"))
 
 // App Routing
 app.get('/', home);
-app.post('/postCategory', homePostCategory);
-app.post('/postTask', homePostTask);
-app.delete('/deleteTask', homeDeleteTask);
-app.delete('/deleteAllTasks', homeDeleteAllTasks);
-app.put('/editTask', homeEditTask);
-app.put('/finishTask', homeFinishTask);
+// app.post('/postCategory', homePostCategory);
+// app.post('/postTask', homePostTask);
+// app.delete('/deleteTask', homeDeleteTask);
+// app.delete('/deleteAllTasks', homeDeleteAllTasks);
+// app.put('/editTask', homeEditTask);
+// app.put('/finishTask', homeFinishTask);
 
 
 // Task routing
-app.get('/api/task', (req, res, next) => getObject("User", req, res, next));
+app.get('/api/task', (req, res, next) => getObject("Task", req, res, next));
 app.post('/api/task', (req, res, next) => postObject("Task", req, res, next));
 app.delete('/api/task/:id', (req, res, next) => deleteObject("Task", req, res, next));
 app.put('/api/task', (req, res, next) => updateObject("Task", req, res, next));

@@ -10,8 +10,19 @@ export default new EntitySchema ({
             type: "int",
             generated: true
         },
-        name: {
+        title: {
             type: "varchar"
+        },
+        slug: {
+            type: "varchar"
+        }
+    },
+    relations: {
+        task: {
+            target: "Task",
+            type: "one-to-many",
+            cascade: true,
+            inverseSide: "category"
         }
     }
 })

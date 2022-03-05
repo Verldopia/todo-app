@@ -1,5 +1,5 @@
-import User from "./User.js";
+// import User from "./User.js";
 import Category from "./Category.js";
 import Task from "./Task.js";
 
-export default [User, Category, Task];
+export default [Category, Task];
