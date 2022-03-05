@@ -84,10 +84,10 @@ export const updateObject = async (entityName, req, res, next) => {
         // Set name for output
         const readableEntityName = entityName.toLowerCase();
 
-        if(!req.body.name) throw new Error(`Provide an id for the ${readableEntityName} you want to update`)
+        if(!req.body.id) throw new Error(`Provide an id for the ${readableEntityName} you want to update`)
         
         // Search for unwanted inputs
-        const validProperties = [ "id", "name" ];
+        const validProperties = [ "id", "title", "checked" ];
         const unwantedProperties = Object.getOwnPropertyNames(req.body).filter((prop) => !validProperties.includes(prop));
         if(!unwantedProperties.length === 0) throw new Error (`You requested unwanted properties: ${unwantedProperties.join('')}`)
         

@@ -85,6 +85,7 @@ export const homeDeleteTask = async (req, res, next) => {
 
 // Delete All Tasks
 export const homeDeleteAllTasks = async (req, res, next) => {
+  log('init')
   try {
   } catch(e) {
       next(e.message);
@@ -102,7 +103,26 @@ export const homeEditTask = async (req, res, next) => {
 // Finish Task
 export const homeFinishTask = async (req, res, next) => {
   try {
-  } catch(e) {
-      next(e.message);
-  }
+    const entityName = "Task";
+    // Set name for output
+    const readableEntityName = entityName.toLowerCase();
+
+    if(!req.body.id) throw new Error(`Provide an id for the ${readableEntityName} you want to update`)
+    
+    // Get the requested repository
+    const repository = getConnection().getRepository(entityName);
+    
+    // Get the requested entityName
+    const object = await repository.findOne({
+        where: { id: req.body.id }
+    });
+    
+    // Save the updated request
+    await repository.save({ ...object, ...req.body });
+    
+    // Send back the updated id
+    res.status(200).json({ status: `Updated ${readableEntityName} with id: ${req.body.id}` });
+} catch(e) {
+    next(e.message);
+}
 };

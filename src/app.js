@@ -16,8 +16,12 @@ import HandlebarsHelpers from "./lib/HandlebarsHelpers.js";
 import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
 import entities from "./models/index.js";
-import { ppid } from "process";
-import { getObject, postObject, deleteObject, updateObject } from "./controllers/api/object.js"
+import { 
+  getObject, 
+  postObject, 
+  deleteObject, 
+  updateObject 
+} from "./controllers/api/object.js"
 
 const app = express();
 app.use(express.static('public'))
@@ -39,10 +43,10 @@ app.set("views", path.join(SOURCE_PATH, "views"))
 app.get('/', home);
 app.post('/postCategory', homePostCategory);
 app.post('/postTask', homePostTask);
-// app.delete('/deleteTask', homeDeleteTask);
-// app.delete('/deleteAllTasks', homeDeleteAllTasks);
-// app.put('/editTask', homeEditTask);
-// app.put('/finishTask', homeFinishTask);
+app.delete('/deleteTask', homeDeleteTask);
+app.delete('/deleteAllTasks', homeDeleteAllTasks);
+app.put('/editTask', homeEditTask);
+app.put('/finishTask', homeFinishTask);
 
 
 // Task routing
