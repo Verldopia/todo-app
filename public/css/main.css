@@ -87,6 +87,7 @@ header {
 }
 .header-box--logo {
     width: 12rem;
+    gap: 4rem;
 }
 .header-box--logout {
     display: flex;
@@ -100,22 +101,23 @@ header {
 .switch-box {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    width: 10rem;
+    margin-left: 0;
+    width: 12rem;
     height: 4.5rem;
-    border: 1px solid green;
     overflow: hidden;
-}
-.switch__label {
-    color: var(--primary-text);
-    padding: 0 1rem;
+    border-radius: 2rem;
 }
 .switch__img {
     background-image: var(--switch-img);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 80%;
+}
+.switch__img {
+    cursor: pointer;
     position: absolute;
     width: 4rem;
     height: 4rem;
@@ -129,14 +131,14 @@ header {
     0% {
         margin-left: 0;
     }
-    50% {
+    70% {
         margin-left: 15rem;
     }
-    55% {
-        margin-top: 3rem;
+    75% {
+        margin-top: 5rem;
         opacity: 0;
     }
-    60% {
+    80% {
         margin-left: -15rem;
     }
     100% {
@@ -319,7 +321,7 @@ li:hover {
     padding: 1rem 2rem;
 }
 .logout:hover,
-.header-box--logo:hover {
+.switch-box:hover {
     background-color: var(--primary-border);
 }
 .p--pending {
