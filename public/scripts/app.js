@@ -6,6 +6,9 @@ import { themes } from "./themes.js";
             // Get defined themes from themes module
             this.themes = themes;
             this.root = document.documentElement;
+            this.index = localStorage.getItem("activeIndex");
+            this.index = this.index === null ? 1 : this.index;
+            console.log(this.index);
             
             this.cacheElements();
             this.registerListeners();
@@ -15,10 +18,11 @@ import { themes } from "./themes.js";
             this.$switch = document.querySelector('.switch__img');
         },
         registerListeners() {
-            let i = 1;
+            console.log(this.index);
             this.$switch.addEventListener('click', () => {
                 // Loop through themes
-                this.activeThemeName = this.themes[i < this.themes.length ? i++ : i = 0];
+                this.activeThemeName = this.themes[this.index < this.themes.length ? this.index++ : this.index = 0];
+                this.index = this.index === 0 ? 1 : this.index;
 
                 // Set active state and delete after 1.5seconds
                 this.$switch.classList.add("active");
@@ -27,6 +31,7 @@ import { themes } from "./themes.js";
                 }, 1500)
 
                 // Change in local storage
+                localStorage.setItem("activeIndex", this.index);
                 localStorage.setItem("activeThemeName", this.activeThemeName.slug);
                 this.changeDOMTheme();
             });
