@@ -8,17 +8,17 @@ import { themes } from "./themes.js";
             this.root = document.documentElement;
             this.index = localStorage.getItem("activeIndex");
             this.index = this.index === null ? 1 : this.index;
-            console.log(this.index);
             
             this.cacheElements();
             this.registerListeners();
+            this.shake();
             this.changeDOMTheme();
         },
         cacheElements() {
             this.$switch = document.querySelector('.switch__img');
+            this.$switchBox = document.querySelector('.switch-box');
         },
         registerListeners() {
-            console.log(this.index);
             this.$switch.addEventListener('click', () => {
                 // Loop through themes
                 this.activeThemeName = this.themes[this.index < this.themes.length ? this.index++ : this.index = 0];
@@ -35,6 +35,14 @@ import { themes } from "./themes.js";
                 localStorage.setItem("activeThemeName", this.activeThemeName.slug);
                 this.changeDOMTheme();
             });
+        },
+        shake() {
+            setInterval(() => {
+                this.$switchBox.classList.add("shaking")
+            }, 3000)
+            setInterval(() => {
+                this.$switchBox.classList.remove("shaking");
+            }, 6000)
         },
         changeDOMTheme() {
             const activeTheme = this.themes.find((theme) => theme.slug === localStorage.getItem("activeThemeName"));

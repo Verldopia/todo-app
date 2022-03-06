@@ -79,7 +79,6 @@ header {
     justify-content: center;
 }
 .header-box {
-    margin: 0 1rem;
     justify-content: space-between;
 }
 .header-box h1 {
@@ -93,6 +92,7 @@ header {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
+    margin-right: 1rem;
     align-items: center;
 }
 
@@ -101,14 +101,13 @@ header {
 .switch-box {
     position: relative;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin: 0 auto;
     margin-left: 0;
-    width: 12rem;
+    width: 7rem;
     height: 4.5rem;
     overflow: hidden;
-    border-radius: 2rem;
 }
 .switch__img {
     background-image: var(--switch-img);
@@ -124,26 +123,49 @@ header {
     margin: 0.5rem;
     border-radius: 2rem;
 }
+.switch__img:hover {
+    transform: scale(120%);
+}
 .active {
     animation: switch 1.5s;
 }
 @keyframes switch {
-    0% {
+    0%, 100% {
         margin-left: 0;
+        opacity: 1;
     }
-    70% {
+    40% {
         margin-left: 15rem;
     }
-    75% {
+    45% {
         margin-top: 5rem;
         opacity: 0;
     }
-    80% {
+    50% {
         margin-left: -15rem;
     }
-    100% {
-        margin-left: 0;
-        opacity: 1;
+}
+.shaking {
+    animation: shake infinite 3s;
+}
+  @keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+        transform: rotate(5deg);
+        transform: scale(110%);
+    }
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+        transform: rotate(-20deg);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-3px, 0, 0);
+        transform: rotate(20deg);
+        transform: scale(110%);
+    }
+    40%, 60% {
+        transform: translate3d(3px, 0, 0);
+        transform: rotate(-10deg);
     }
 }
 
@@ -320,8 +342,7 @@ li:hover {
 .logout {
     padding: 1rem 2rem;
 }
-.logout:hover,
-.switch-box:hover {
+.logout:hover {
     background-color: var(--primary-border);
 }
 .p--pending {
