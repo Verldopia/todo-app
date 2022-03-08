@@ -132,14 +132,25 @@ export const homeFinishTask = async (req, res, next) => {
     
     // Search if task already exists
     let task = await repository.findOne({
-      where: { title: req.body.title }
+      where: { 
+        title: req.body.title, 
+        id: req.body.id 
+      }
     });
 
-    task = await repository.save({ 
+    // Remove task in tasks,
+    if(task) {
+      task = await repository.remove({
+        id: req.body.id
+      })
+    }
+
+    // Add tasks to done-list
+    task = await repository.save({
       title: req.body.title, 
       checked: true
     });
-
+    
     // Render homepage again
     res.redirect('/');
 } catch(e) {
