@@ -1,31 +1,29 @@
 import typeorm from "typeorm";
 
 const { EntitySchema } = typeorm;
-export default new EntitySchema ({
-    name: "User",
-    tableName: "users",
-    columns: {
-        id: {
-            primary: true,
-            type: "int",
-            generated: true
-        },
-        name: {
-            type: "varchar"
-        }
+
+export default new EntitySchema({
+  name: "User",
+  tableName: "users",
+  columns: {
+    id: {
+      primary: true,
+      type: "int",
+      generated: true,
     },
-    relations: {
-        tasks: {
-            target: "Task",
-            type: "many-to-many",
-            cascade: true,
-            joinTable: true,
-        },
-        categories: {
-            target: "Category",
-            type: "many-to-many",
-            cascade: true,
-            joinTable: true,
-        }
+    email: {
+      type: "varchar",
+    },
+    password: {
+      type: "varchar",
     }
-})
+  },
+  relations: {
+    user_meta: {
+      target: "UserMeta",
+      type: "one-to-one",
+      cascade: true,
+      joinColumn: true
+    }
+  }
+});

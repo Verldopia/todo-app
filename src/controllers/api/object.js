@@ -41,7 +41,7 @@ export const getObject = async (entityName, req, res, next) => {
 
         // get items form repository, with their category
         const entityItems = await repository.find({ 
-            relations: ["category"] 
+            relations: ["category" || "user_meta"]
         });
 
         res.status(200).json({ data: entityItems });

@@ -3,16 +3,24 @@
 import { getConnection } from "typeorm";
 
 export const home = async (req, res, next) => {
-  // Get the taskitems
+  // Get the repositories
   const taskRepository = getConnection().getRepository('Task');
   const categoryRepository = getConnection().getRepository("Category");
+  const userRepository = getConnection().getRepository('User');
+
+  // Find in sql tables
   const taskData = await taskRepository.find();
   const categoryData = await categoryRepository.find();
+  const userData = await userRepository.findOne({
+    where: { id: req.user?.userId },
+    relations: [ "user_meta" ]
+  });
 
   // Render to homepage
   res.render('home', {
     taskData,
-    categoryData
+    categoryData,
+    userData
   });
 }
 
