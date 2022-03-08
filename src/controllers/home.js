@@ -102,6 +102,8 @@ export const homeDeleteObject = async (entityName, req, res, next) => {
       })
     }
     
+    // Render homepage again
+    res.redirect('/').preventDefault();
   } catch(e) {
       next(e.message);
   }
@@ -144,7 +146,6 @@ export const homeFinishTask = async (req, res, next) => {
         id: req.body.id
       })
     }
-
     // Add tasks to done-list
     task = await repository.save({
       title: req.body.title, 

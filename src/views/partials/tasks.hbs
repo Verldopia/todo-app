@@ -1,5 +1,5 @@
 <div class="box-clear">
-    <h3 class="p--pending">You have pending tasks</h3>
+    {{#length taskData false "pending"}}{{/length}}
     {{#button "DELETE" "/deleteAllTasks" "submit submit--clear" "submit" "Clear All"}}{{/button}}
 </div>
 <ul class="tasks">
