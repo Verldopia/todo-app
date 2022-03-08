@@ -53,7 +53,7 @@ export const postRegister = async (req, res, next) => {
 
       // Check if we found a user
       if(user) {
-        req.formErrors = [{ message: "Gebruiker bestaat reeds!" }]
+        req.formErrors = [{ message: "Gebruiker bestaat reeds" }]
         return next();
       };
 

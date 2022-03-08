@@ -2,9 +2,10 @@
     <div class="header-box">
 
         {{> themeswitch}}
-
-        <div class="header-box--logout">
-            <a class="logout" href="/">Logout</a>
-        </div>
+        {{#if userData}} 
+            <div class="header-box--logout">
+                {{#button "POST" "/logout" "logout" "submit" "Logout"}}{{/button}}
+            </div>
+        {{/if}}
     </div>
 </header>

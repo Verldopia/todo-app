@@ -67,10 +67,6 @@ app.post('/api/task', (req, res, next) => postObject("Task", req, res, next));
 app.delete('/api/task/:id', (req, res, next) => deleteObject("Task", req, res, next));
 app.put('/api/task', (req, res, next) => updateObject("Task", req, res, next));
 
-// API routing users
-app.get("/api/user", (req, res, next) => getObject("User", req, res, next));
-
-
 // Create database connection and start listening
 createConnection ({
   type: process.env.TYPE,

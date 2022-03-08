@@ -1,13 +1,15 @@
+{{> header}}
 <section class="auth-container login">
-  <h4>Login</h4>
+  <h3 class="h3--auth">Login</h3>
   {{>form-errors this}}
   <form method="post" action="login">
     {{#each inputs}}
       {{>form-input this}}
     {{/each}}
     <div class="footer-container">
-      <input type="reset" class="btn btn-tertiary" value="Clear">
-      <input type="submit" class="btn btn-primary" value="Login">
+      <input type="reset" class="btn btn-clear" value="Clear">
+      <input type="submit" class="btn btn-register" value="Login">
     </div>
   </form>
+  {{#button "GET" "/register" "btn btn-login" "submit" "Register"}}{{/button}}
 </section>
