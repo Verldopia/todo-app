@@ -7,7 +7,7 @@ import {
   home,
   homePostTask,
   homePostCategory,
-  homeDeleteTask,
+  homeDeleteObject,
   homeDeleteAllTasks,
   homeEditTask,
   homeFinishTask
@@ -56,10 +56,11 @@ app.post('/logout', logout);
 // App Tasks routing
 app.post('/postCategory', homePostCategory);
 app.post('/postTask', homePostTask);
-app.delete('/deleteTask', homeDeleteTask);
-app.delete('/deleteAllTasks', homeDeleteAllTasks);
-app.put('/editTask', homeEditTask);
-app.put('/finishTask', homeFinishTask);
+app.post('/deleteTask', (req, res, next) => homeDeleteObject("Task", req, res, next));
+app.post('/deleteCategory', (req, res, next) => homeDeleteObject("Category", req, res, next));
+app.post('/deleteAllTasks', homeDeleteAllTasks);
+app.post('/editTask', homeEditTask);
+app.post('/finishTask', homeFinishTask);
 
 // API routing tasks
 app.get('/api/task', (req, res, next) => getObject("Task", req, res, next));

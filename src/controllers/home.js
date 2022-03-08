@@ -1,5 +1,6 @@
 // The Home Controller
 // 
+import { body } from "express-validator";
 import { getConnection } from "typeorm";
 
 export const home = async (req, res, next) => {
@@ -83,9 +84,24 @@ export const homePostCategory = async (req, res, next) => {
 }
     }
     
-  // Delete Task
-export const homeDeleteTask = async (req, res, next) => {
+  // Delete entity
+export const homeDeleteObject = async (entityName, req, res, next) => {
   try {
+    // get the repositories
+    const repository = getConnection().getRepository(entityName);
+    
+    // Search for entity in database
+    let entity = await repository.findOne({
+      where: { id: req.body.id }
+    });
+
+    // If entity exists, delete it
+    if(entity) {
+      entity = await repository.remove({
+        id: req.body.id
+      })
+    }
+    
   } catch(e) {
       next(e.message);
   }
@@ -111,26 +127,21 @@ export const homeEditTask = async (req, res, next) => {
 // Finish Task
 export const homeFinishTask = async (req, res, next) => {
   try {
-    console.log('init');
-    const entityName = "Task";
-    // Set name for output
-    const readableEntityName = entityName.toLowerCase();
-
-    if(!req.body.id) throw new Error(`Provide an id for the ${readableEntityName} you want to update`)
+    // get the repositories
+    const repository = getConnection().getRepository("Task");
     
-    // Get the requested repository
-    const repository = getConnection().getRepository(entityName);
-    
-    // Get the requested entityName
-    const object = await repository.findOne({
-        where: { id: req.body.id }
+    // Search if task already exists
+    let task = await repository.findOne({
+      where: { title: req.body.title }
     });
-    
-    // Save the updated request
-    await repository.save({ ...object, ...req.body });
-    
-    // Send back the updated id
-    res.status(200).json({ status: `Updated ${readableEntityName} with id: ${req.body.id}` });
+
+    task = await repository.save({ 
+      title: req.body.title, 
+      checked: true
+    });
+
+    // Render homepage again
+    res.redirect('/');
 } catch(e) {
     next(e.message);
 }

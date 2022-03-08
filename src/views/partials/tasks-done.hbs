@@ -8,7 +8,10 @@
         {{#if checked}}
             <li>
                 <p>{{title}}</p>
-                {{#button "POST" "/api/task/:id" "done clear" "submit"}}{{/button}}
+                <form class="input__form" method="POST">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <button formaction="/deleteTask" type="submit" class="done clear"></button>
+                </form>
             </li>
         {{/if}}
     {{/each}}

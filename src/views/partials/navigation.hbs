@@ -4,7 +4,10 @@
         {{#each categoryData}}
             <li class="box-categories__item">
                 <button class="categories--btn" href="{{slug}}">{{title}}</button>
-                {{#button "POST" "/api/task/:id" "done clear" "submit"}}{{/button}}
+                <form class="input__form" method="POST">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <button formaction="/deleteCategory" type="submit" class="done clear"></button>
+                </form>      
             </li>
         {{/each}}
     </ul>

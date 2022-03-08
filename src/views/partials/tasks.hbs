@@ -7,9 +7,12 @@
         {{#unless checked}}
             <li>
                 <p>{{title}}</p>
-                {{#button "PUT" "/finishTask" "done" "submit"}}{{/button}}
-                {{#button "PUT" "/editTask" "edit" "submit"}}{{/button}}
-                {{#button "DELETE" "/deleteTask" "clear" "submit"}}{{/button}}
+                <form class="input__form" method="POST">
+                    <input type="hidden" name="title" value="{{title}}">
+                    <button formaction="/finishTask" type="submit" class="done">+</button>
+                    <button formaction="/editTask" type="submit" class="edit"></button>
+                    <button formaction="/deleteTask" type="submit" class="clear"></button>
+                </form>
             </li>
         {{/unless}}
     {{/each}}
