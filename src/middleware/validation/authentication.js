@@ -3,18 +3,17 @@
  */
  import { body } from "express-validator";
 
-
 export default [
   body('email')
     .notEmpty()
-    .withMessage('Geen  e-mail gegeven')
+    .withMessage('Geen e-mail ingevoerd')
     .bail()
     .isEmail()
-    .withMessage('Geen correcte e-mail'),
+    .withMessage('Geen correct e-mailadres'),
   body('password')
     .notEmpty()
-    .withMessage('Geen ww gegeven')
+    .withMessage('Geen wachtwoord ingevoerd')
     .bail()
     .isLength({ min: 6 })
-    .withMessage('Wachtwoord minlengte: 6'),
+    .withMessage('wachtwoord moet minimum 6 karakters lang zijn'),
 ]

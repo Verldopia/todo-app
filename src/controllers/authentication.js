@@ -37,7 +37,7 @@ export const register = async (req, res, next) => {
 export const postRegister = async (req, res, next) => {
   try {
     const errors = validationResult(req);
-
+    
     if(!errors.isEmpty()) {
       req.formErrorFields = {};
       errors.array().forEach(({ msg, param }) => { req.formErrorFields[param] = msg })
@@ -53,7 +53,7 @@ export const postRegister = async (req, res, next) => {
 
       // Check if we found a user
       if(user) {
-        req.formErrors = [{ message: "Gebruiker bestaat reeds" }]
+        req.formErrors = [{ message: "Dit e-mailadres is al in gebruik" }]
         return next();
       };
 
@@ -130,7 +130,7 @@ export const postLogin = async (req, res, next) => {
 
       // Check if we found a user
       if(!user) {
-        req.formErrors = [{ message: "Gebruiker is onbekend" }]
+        req.formErrors = [{ message: "Gebruiker is niet geregistreerd" }]
         return next();
       };
 
