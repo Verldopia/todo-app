@@ -8,9 +8,8 @@ import {
   homePostTask,
   homePostCategory,
   homeDeleteObject,
-  homeDeleteAllTasks,
-  homeEditTask,
-  homeFinishTask
+  homeDeleteAllObjects,
+  homeEditObject
 } from "./controllers/home.js";
 import HandlebarsHelpers from "./lib/HandlebarsHelpers.js";
 import bodyParser from "body-parser";
@@ -58,9 +57,10 @@ app.post('/postCategory', homePostCategory);
 app.post('/postTask', homePostTask);
 app.post('/deleteTask', (req, res, next) => homeDeleteObject("Task", req, res, next));
 app.post('/deleteCategory', (req, res, next) => homeDeleteObject("Category", req, res, next));
-app.post('/deleteAllTasks', homeDeleteAllTasks);
-app.post('/editTask', homeEditTask);
-app.post('/finishTask', homeFinishTask);
+app.post('/deletePendingTasks', (req, res, next) => homeDeleteAllObjects("Task", false, req, res, next));
+app.post('/deleteDoneTasks', (req, res, next) => homeDeleteAllObjects("Task", true, req, res, next));
+app.post('/editTask', (req, res, next) => homeEditObject("Task", false, req, res, next));
+app.post('/finishTask', (req, res, next) => homeEditObject("Task", true, req, res, next));
 
 // API routing tasks
 app.get('/api/task', (req, res, next) => getObject("Task", req, res, next));

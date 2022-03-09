@@ -311,6 +311,18 @@ li p {
     background-color: var(--primary-buttons);
     font-size: 1.7rem;
 }
+.task__box {
+    display: flex;
+    align-items: center;
+}
+.task__edit {
+    width: 30rem;
+    cursor: text;
+    background-color: unset;
+    color: var(--primary-text);
+    font-size: 1.1rem;
+    border: none;
+}
 .done {
     position: absolute;
     bottom: 0;

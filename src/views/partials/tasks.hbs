@@ -1,17 +1,24 @@
 <div class="box-clear">
     {{#length taskData false "pending"}}{{/length}}
-    {{#button "DELETE" "/deleteAllTasks" "submit submit--clear" "submit" "Clear All"}}{{/button}}
+    <form method="POST">
+        <input type="hidden" name="id" value="{{id}}">
+        <button formaction="/deletePendingTasks" type="submit" class="submit submit--clear">Clear All</button>
+    </form>
 </div>
+
 <ul class="tasks">
     {{#each taskData}}
         {{#unless checked}}
             <li>
-                <p>{{title}}</p>
+                <form class="task__box" method="POST">
+                    <input class="task__edit" type="text" name="title" value="{{title}}"></input>
+                    <input type="hidden" name="id" value="{{id}}"></input>
+                    <button formaction="/editTask" type="submit" class="edit"></button>
+                </form>
                 <form class="input__form" method="POST">
                     <input type="hidden" name="title" value="{{title}}">
                     <input type="hidden" name="id" value="{{id}}">
                     <button formaction="/finishTask" type="submit" class="done"></button>
-                    <button formaction="/editTask" type="submit" class="edit"></button>
                     <button formaction="/deleteTask" type="submit" class="clear"></button>
                 </form>
             </li>

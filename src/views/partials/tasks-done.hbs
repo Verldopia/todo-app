@@ -1,6 +1,9 @@
 <div class="box-clear">
     {{#length taskData true "finished"}}{{/length}}
-    {{#button "DELETE" "/deleteAllTasks" "submit submit--clear" "submit" "Clear All"}}{{/button}}
+    <form method="POST">
+        <input type="hidden" name="id" value="{{id}}">
+        <button formaction="/deleteDoneTasks" type="submit" class="submit submit--clear">Clear All</button>
+    </form>
 </div>
 
 <ul class="tasks--done  box--bottom">
