@@ -6,14 +6,14 @@
 export default [
   body('email')
     .notEmpty()
-    .withMessage('Geen e-mail ingevoerd')
+    .withMessage('No email detected')
     .bail()
     .isEmail()
-    .withMessage('Geen correct e-mailadres'),
+    .withMessage('Incorrect email'),
   body('password')
     .notEmpty()
-    .withMessage('Geen wachtwoord ingevoerd')
+    .withMessage('No password detected')
     .bail()
     .isLength({ min: 6 })
-    .withMessage('wachtwoord moet minimum 6 karakters lang zijn'),
+    .withMessage('Password is not safe enough!'),
 ]

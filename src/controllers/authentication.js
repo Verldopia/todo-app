@@ -53,7 +53,7 @@ export const postRegister = async (req, res, next) => {
 
       // Check if we found a user
       if(user) {
-        req.formErrors = [{ message: "Dit e-mailadres is al in gebruik" }]
+        req.formErrors = [{ message: "E-mail already registered" }]
         return next();
       };
 
@@ -130,7 +130,7 @@ export const postLogin = async (req, res, next) => {
 
       // Check if we found a user
       if(!user) {
-        req.formErrors = [{ message: "Gebruiker is niet geregistreerd" }]
+        req.formErrors = [{ message: "User is not registered" }]
         return next();
       };
 
@@ -139,7 +139,7 @@ export const postLogin = async (req, res, next) => {
 
       // If password is wrong
       if(!isEqual) {
-        req.formErrors = [{ message: "Wachtwoord is onjuist" }]
+        req.formErrors = [{ message: "Password is incorrect" }]
         return next();
       }
       

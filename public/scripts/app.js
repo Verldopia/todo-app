@@ -17,6 +17,7 @@ import { themes } from "./themes.js";
         cacheElements() {
             this.$switch = document.querySelector('.switch__img');
             this.$switchBox = document.querySelector('.switch-box');
+            this.$overlay = document.querySelector('.overlay__box');
         },
         registerListeners() {
             this.$switch.addEventListener('click', () => {
@@ -26,9 +27,13 @@ import { themes } from "./themes.js";
 
                 // Set active state and delete after 1.5seconds
                 this.$switch.classList.add("active");
+                this.$overlay.classList.add("overlay");
                 setTimeout(() => {
                     this.$switch.classList.remove("active")
                 }, 1500)
+                setTimeout(() => {
+                    this.$overlay.classList.remove("overlay")
+                }, 600)
 
                 // Change in local storage
                 localStorage.setItem("activeIndex", this.index);

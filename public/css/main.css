@@ -199,6 +199,30 @@ header {
 main {
     display: flex;
 }
+.overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--primary-nav__bg);
+    z-index: 100;
+    opacity: 0.3;
+    transition: ease-out 0.3s all;
+    animation: overlay 0.6s;
+}
+@keyframes overlay {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 .input__form {
     align-items: center;
     display: flex;
