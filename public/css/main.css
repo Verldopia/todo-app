@@ -312,6 +312,7 @@ li p {
 }
 .done {
     position: absolute;
+    bottom: 0;
     left: -3rem;
     background-color: #009c15;
     background-image: url(../images/checkmark-circle.svg);
@@ -319,6 +320,7 @@ li p {
 .edit,
 .clear {
     position: absolute;
+    bottom: 0;
     right: 0;
     background-image: url(../images/delete--white.png);
     background-size: 50%;
