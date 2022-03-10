@@ -5,8 +5,7 @@ import { create } from "express-handlebars";
 import { SOURCE_PATH } from "./consts.js";
 import {
   home,
-  homePostTask,
-  homePostCategory,
+  homePostObject,
   homeDeleteObject,
   homeDeleteAllObjects,
   homeEditObject
@@ -53,8 +52,8 @@ app.post('/login', ...validationAuthentication, postLogin, login);
 app.post('/logout', logout);
 
 // App Tasks routing
-app.post('/postCategory', homePostCategory);
-app.post('/postTask', homePostTask);
+app.post('/postCategory', (req, res, next) => homePostObject("Category",{slug: req.body.title}, req, res, next));
+app.post('/postTask', (req, res, next) => homePostObject("Task", {checked: false}, req, res, next));
 app.post('/deleteTask', (req, res, next) => homeDeleteObject("Task", req, res, next));
 app.post('/deleteCategory', (req, res, next) => homeDeleteObject("Category", req, res, next));
 app.post('/deletePendingTasks', (req, res, next) => homeDeleteAllObjects("Task", false, req, res, next));

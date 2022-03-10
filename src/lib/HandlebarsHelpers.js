@@ -12,4 +12,9 @@ export default {
         <h3 class="p--pending">You have ${task.length === 0 ? "no" : task.length} ${state} task${task.length === 1 ? "" : "s"}</h3>
         `
     },
+    capital: function(text) {
+        return `
+        
+        `
+    }
 }

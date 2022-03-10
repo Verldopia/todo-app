@@ -1,5 +1,6 @@
-// The Home Controller
-// 
+/**
+* The Home Controller
+*/
 import { body } from "express-validator";
 import { getConnection } from "typeorm";
 
@@ -25,25 +26,25 @@ export const home = async (req, res, next) => {
   });
 }
 
-// Post Tasks
-export const homePostTask = async (req, res, next) => {
+// Post Objects
+export const homePostObject = async (objectName, data, req, res, next) => {
   try {
     // validate incoming body
-    if(!req.body.title) throw new Error('Please provide a task');
+    if(!req.body.title) throw new Error(`Please provide a ${objectName}`);
     
     // get the repositories
-    const repository = getConnection().getRepository("Task");
+    const repository = getConnection().getRepository(objectName);
     
-    // Search if task already exists
-    let task = await repository.findOne({
+    // Search if object already exists
+    let object = await repository.findOne({
       where: { title: req.body.title }
     });
 
-    // If task does not exists
-    if(!task) {
-      task = await repository.save({ 
+    // If object does not exists
+    if(!object) {
+      object = await repository.save({ 
         title: req.body.title, 
-        checked: false
+        ...data
       });
     }
     
@@ -52,39 +53,9 @@ export const homePostTask = async (req, res, next) => {
   } catch(e) {
       next(e.message);
   }
-}
+}  
 
-// Post Categories
-export const homePostCategory = async (req, res, next) => {
-  try {
-    // validate incoming body
-    if(!req.body.title) throw new Error('Please provide a category');
-    const title = req.body.title;
-
-    // get the repositories
-    const repository = getConnection().getRepository("Category");
-    
-    // Search if category already exists
-    let category = await repository.findOne({
-      where: { title: req.body.title }
-    });
-
-    // If category does not exists
-    if(!category) {
-      category = await repository.save({ 
-        title: req.body.title, 
-        slug: title
-      });
-    }
-    
-    // Render homepage again
-    res.redirect('/');
-  } catch(e) {
-      next(e.message);
-  }
-}
-    
-  // Delete object
+// Delete object
 export const homeDeleteObject = async (objectName, req, res, next) => {
   try {
     // get the repositories
@@ -145,18 +116,11 @@ export const homeEditObject = async (objectName, status, req, res, next) => {
       where: { id: req.body.id }
     });
 
-    // Remove object in objects,
-    if(object) {
-      object = await repository.remove({
-        id: req.body.id
-      })
-    }
-    
     // Add objects to done-list
     object = await repository.save({
-      id: req.body.id,
-      title: req.body.title, 
-      checked: status
+      ...object, 
+      checked: status,
+      title: req.body.title
     });
     
     // Render homepage again
