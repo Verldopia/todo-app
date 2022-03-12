@@ -14,17 +14,15 @@ export default new EntitySchema ({
             type: "varchar"
         },
         checked: {
-            type: "boolean"
+            type: "boolean",
         },
     },
     relations: {
-        category: {
+        categories: {
             target: "Category",
             type: "many-to-one",
-            joinColumn: {
-                name: "category_id" 
-            },
+            joinColumn: true,
             inverseSide: "tasks"
-        }
+        },
     }
 })

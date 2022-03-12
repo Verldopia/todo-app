@@ -15,5 +15,5 @@ export default [
     .withMessage('No password detected')
     .bail()
     .isLength({ min: 6 })
-    .withMessage('Password is not safe enough!'),
+    .withMessage('Password is not safe enough!')
 ]

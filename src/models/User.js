@@ -16,14 +16,23 @@ export default new EntitySchema({
     },
     password: {
       type: "varchar",
+    },
+    name: {
+      type: "varchar"
     }
   },
-  relations: {
-    user_meta: {
-      target: "UserMeta",
-      type: "one-to-one",
+  relations: { 
+    categories: {
+      target: 'Category',
+      type: 'one-to-many',
       cascade: true,
-      joinColumn: true
+      inverseSide: 'users',
+    },
+    roles: {
+      target: "Role",
+      type: "many-to-one",
+      joinColumn: true,
+      inverseSide: "users"
     }
   }
 });

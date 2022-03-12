@@ -24,6 +24,12 @@ export const register = async (req, res, next) => {
     type: 'password',
     value: req.body?.password ? req.body.password : "",
     error: req.formErrorFields?.password ? req.formErrorFields?.password : ""
+  }, {
+    name: 'name',
+    label: 'Name',
+    type: 'text',
+    value: req.body?.name ? req.body.name : "",
+    error: req.formErrorFields?.name ? req.formErrorFields?.name : ""
   }]
 
   // render the register page
@@ -63,7 +69,27 @@ export const postRegister = async (req, res, next) => {
       // Create a new user
       await userRepository.save({
         email: req.body.email,
-        password: hashedPassword
+        password: hashedPassword,
+        name: req.body.name,
+        categories: [
+          {
+            title: 'Default',
+            tasks: [
+              {
+                title: 'Click the icon to switch themes!',
+                checked: false,
+              },
+              {
+                title: 'Unleash chaos upon Gotham',
+                checked: false,
+              },
+              {
+                title: 'Registered for this app',
+                checked: true,
+              },
+            ],
+          },
+        ],
       });
 
       // Go to login page
@@ -119,45 +145,44 @@ export const postLogin = async (req, res, next) => {
       errors.array().forEach(({ msg, param }) => { req.formErrorFields[param] = msg })
       return next();
 
-    } else {
-      // Get the user repository
-      const userRepository = getConnection().getRepository('User');
-
-      // Validate if user exists
-      const user = await userRepository.findOne({
-        where: { email: req.body.email }
-      });
-
-      // Check if we found a user
-      if(!user) {
-        req.formErrors = [{ message: "User is not registered" }]
-        return next();
-      };
-
-      // If password is equal to database
-      const isEqual = bcrypt.compareSync(req.body.password, user.password)
-
-      // If password is wrong
-      if(!isEqual) {
-        req.formErrors = [{ message: "Password is incorrect" }]
-        return next();
-      }
-      
-      // Create a webtoken
-      const token = jwt.sign({ 
-          userId: user.id, 
-          email: user.email,
-        },
-        process.env.TOKEN_SALT,
-        { expiresIn: "10y" }
-      )
-      // Add the cookie to the response
-      res.cookie('token', token, { httpOnly: true });
-
-      // Redirect to homepage
-      res.redirect('/');
     }
     
+    // Get the user repository
+    const userRepository = getConnection().getRepository('User');
+
+    // Validate if user exists
+    const user = await userRepository.findOne({
+      where: { email: req.body.email }
+    });
+
+    // Check if we found a user
+    if(!user) {
+      req.formErrors = [{ message: "User is not registered" }]
+      return next();
+    };
+
+    // If password is equal to database
+    const isEqual = bcrypt.compareSync(req.body.password, user.password)
+
+    // If password is wrong
+    if(!isEqual) {
+      req.formErrors = [{ message: "Password is incorrect" }]
+      return next();
+    }
+    
+    // Create a webtoken
+    const token = jwt.sign({ 
+        userId: user.id, 
+        email: user.email
+      },
+      process.env.TOKEN_SALT,
+      { expiresIn: "10y" }
+    )
+    // Add the cookie to the response
+    res.cookie('token', token, { httpOnly: true });
+
+    // Redirect to homepage
+    res.redirect('/'); 
   } catch(e) {
     next(e.message);
   }

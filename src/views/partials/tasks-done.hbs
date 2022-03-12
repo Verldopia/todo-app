@@ -10,7 +10,7 @@
     {{#each taskData}}
         {{#if checked}}
             <li>
-                <p>{{title}}</p>
+                <p>{{#capital title}}{{/capital}}</p>
                 <form class="input__form" method="POST">
                     <input type="hidden" name="id" value="{{id}}">
                     <button formaction="/deleteTask" type="submit" class="done clear"></button>

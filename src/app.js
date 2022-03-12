@@ -23,7 +23,8 @@ import {
 } from "./controllers/api/object.js"
 import { register, postLogin, postRegister, login, logout } from "./controllers/authentication.js";
 import { body } from "express-validator";
-import validationAuthentication from "./middleware/validation/authentication.js"
+import registrationAuth from "./middleware/validation/registrationAuth.js"
+import loginAuth from "./middleware/validation/loginAuth.js"
 import { jwtAuth } from "./middleware/jwtAuth.js";
 
 const app = express();
@@ -46,9 +47,9 @@ app.set("views", path.join(SOURCE_PATH, "views"))
 // App Login routing
 app.get('/', jwtAuth, home);
 app.get('/register', register);
-app.post('/register', ...validationAuthentication, postRegister, register);
+app.post('/register', ...registrationAuth, postRegister, register);
 app.get('/login', login);
-app.post('/login', ...validationAuthentication, postLogin, login);
+app.post('/login', ...loginAuth, postLogin, login);
 app.post('/logout', logout);
 
 // App Tasks routing

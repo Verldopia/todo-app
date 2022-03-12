@@ -15,9 +15,10 @@ export const home = async (req, res, next) => {
   const categoryData = await categoryRepository.find();
   const userData = await userRepository.findOne({
     where: { id: req.user?.userId },
-    relations: [ "user_meta" ]
+    relations: [ "roles", "categories" ]
   });
 
+  
   // Render to homepage
   res.render('home', {
     taskData,
