@@ -520,3 +520,27 @@ li:hover {
 .btn-clear {
     width: 4rem;
 }
+
+
+
+.jump {
+    transition: all 1s ease;
+    animation: jump 0.4s ease-in-out infinite alternate;
+}
+
+.catch {
+    transform: scale(0.4);
+}
+
+.captured {
+   display: none;
+}
+
+@keyframes jump {
+    from {
+        bottom: 0;
+    }
+    to {
+        bottom: 1rem;
+    }
+}

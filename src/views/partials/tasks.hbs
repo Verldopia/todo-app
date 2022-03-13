@@ -9,7 +9,7 @@
 <ul class="tasks">
     {{#each taskData}}
         {{#unless checked}}
-            <li>
+            <li id="task-{{id}}" data-order="{{id}}">
                 <form class="task__box" method="POST">
                     <input class="task__edit" type="text" name="title" value="{{#capital title}}{{/capital}}"></input>
                     <input type="hidden" name="id" value="{{id}}"></input>

@@ -6,10 +6,10 @@
     </form>
 </div>
 
-<ul class="tasks--done  box--bottom">
+<ul class="tasks--done box--bottom">
     {{#each taskData}}
         {{#if checked}}
-            <li>
+            <li id="task-{{id}}" data-order="{{id}}">
                 <p>{{#capital title}}{{/capital}}</p>
                 <form class="input__form" method="POST">
                     <input type="hidden" name="id" value="{{id}}">

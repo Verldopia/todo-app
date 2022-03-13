@@ -2,7 +2,7 @@
     <h3 class="larger--all">Categories</h3>
     <ul class="box-categories">
         {{#each categoryData}}
-            <li class="box-categories__item">
+            <li id="category-{{id}}" data-order="{{id}}" class="box-categories__item">
                 <button class="categories--btn" href="{{slug}}">{{#capital title}}{{/capital}}</button>
                 <form class="input__form" method="POST">
                     <input type="hidden" name="id" value="{{id}}">
