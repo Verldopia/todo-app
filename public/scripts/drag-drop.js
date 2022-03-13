@@ -32,27 +32,27 @@ const drag = {
         $taskLi.ondragstart = (e) => {
             $currentLi = $taskLi;
             this.$allTasksLi.forEach((i) => {
-            i.classList.add('hint')
+            i.classList.add('hint__drag')
             })
         };
 
         // Dragging is aborted
         $taskLi.ondragend = (e) => {
             this.$allTasksLi.forEach((i) => {
-            i.classList.remove('hint')
-            i.classList.remove('active')
+            i.classList.remove('hint__drag')
+            i.classList.remove('active__drag')
             })
         };
 
         //  On drag enter
         $taskLi.ondragenter = (e) => {
             if($taskLi === $currentLi) return false;
-            $taskLi.classList.add('active');
+            $taskLi.classList.add('active__drag');
         };
 
         // On drag leave
         $taskLi.ondragleave = (e) => {
-            $taskLi.classList.remove('active');
+            $taskLi.classList.remove('active__drag');
         };
 
         // On drag leave

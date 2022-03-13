@@ -11,9 +11,9 @@
         {{#unless checked}}
             <li id="task-{{id}}" data-order="{{id}}">
                 <form class="task__box" method="POST">
-                    <input class="task__edit" type="text" name="title" value="{{#capital title}}{{/capital}}"></input>
+                    <input class="task__move" type="text" name="title" value="{{#capital title}}{{/capital}}"></input>
                     <input type="hidden" name="id" value="{{id}}"></input>
-                    <button formaction="/editTask" type="submit" class="edit"></button>
+                    <button formaction="/editTask" type="submit" class="move"></button>
                 </form>
                 <form class="input__form" method="POST">
                     <input type="hidden" name="title" value="{{title}}">
