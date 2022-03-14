@@ -6,24 +6,24 @@ import { getConnection } from "typeorm";
 
 export const home = async (req, res, next) => {
   // Get the repositories
-  const taskRepository = getConnection().getRepository('Task');
-  const categoryRepository = getConnection().getRepository("Category");
   const userRepository = getConnection().getRepository('User');
 
   // Find in sql tables
-  const taskData = await taskRepository.find();
-  const categoryData = await categoryRepository.find();
   const userData = await userRepository.findOne({
     where: { id: req.user?.userId },
-    relations: [ "roles", "categories" ]
+    relations: [ "roles", "categories", "categories.tasks" ]
   });
 
-  
+  const categoryData = userData.categories ?? []
+  const taskData = categoryData[0]?.tasks ?? []
+  const categories = categoryData[0]?.id
+
   // Render to homepage
   res.render('home', {
     taskData,
     categoryData,
-    userData
+    userData,
+    categories
   });
 }
 
@@ -41,10 +41,16 @@ export const homePostObject = async (objectName, data, req, res, next) => {
       where: { title: req.body.title }
     });
 
+    if(objectName === "Category") {
+      delete req.body.categories
+    } else {
+      delete req.body.users
+    }
+
     // If object does not exists
     if(!object) {
-      object = await repository.save({ 
-        title: req.body.title, 
+      object = await repository.save({
+        ...req.body,
         ...data
       });
     }

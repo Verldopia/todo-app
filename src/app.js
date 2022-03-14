@@ -63,10 +63,10 @@ app.post('/editTask', (req, res, next) => homeEditObject("Task", false, req, res
 app.post('/finishTask', (req, res, next) => homeEditObject("Task", true, req, res, next));
 
 // API routing tasks
-app.get('/api/task', (req, res, next) => getObject("Task", req, res, next));
-app.post('/api/task', (req, res, next) => postObject("Task", req, res, next));
-app.delete('/api/task/:id', (req, res, next) => deleteObject("Task", req, res, next));
-app.put('/api/task', (req, res, next) => updateObject("Task", req, res, next));
+app.get('/api/task', (req, res, next) => getObject("User", req, res, next));
+app.post('/api/task', (req, res, next) => postObject("User", req, res, next));
+app.delete('/api/task/:id', (req, res, next) => deleteObject("User", req, res, next));
+app.put('/api/task', (req, res, next) => updateObject("User", req, res, next));
 
 // Create database connection and start listening
 createConnection ({

@@ -16,6 +16,7 @@ export const postObject = async (entityName, req, res, next) => {
             where: { title: req.body.title }
         })
 
+        console.log(object);
         // If entityName already exists
         if(object) {
             return res.status(200).json({ 
@@ -25,6 +26,10 @@ export const postObject = async (entityName, req, res, next) => {
         // save the entityName in repository
         const insertedEntityName = await repository.save({
             ...req.body,
+            checked: false,
+            categories: {
+                id: 3
+            },
             tasks: await repository.find()
         });
 
@@ -41,7 +46,7 @@ export const getObject = async (entityName, req, res, next) => {
 
         // get items form repository, with their category
         const entityItems = await repository.find({ 
-            relations: ["category" || "user_meta"]
+            relations: ["categories"]
         });
 
         res.status(200).json({ data: entityItems });
