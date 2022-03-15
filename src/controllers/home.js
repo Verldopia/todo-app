@@ -51,7 +51,8 @@ export const homePostObject = async (objectName, data, req, res, next) => {
     if(!object) {
       object = await repository.save({
         ...req.body,
-        ...data
+        ...data,
+        slug: req.body.title
       });
     }
     

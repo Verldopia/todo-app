@@ -12,6 +12,9 @@ export default new EntitySchema({
     title: {
       type: "varchar",
     },
+    slug: {
+      type:"varchar"
+    }
   },
   relations: {
     users: {

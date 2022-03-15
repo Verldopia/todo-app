@@ -74,6 +74,7 @@ export const postRegister = async (req, res, next) => {
         categories: [
           {
             title: 'Default',
+            slug: 'default',
             tasks: [
               {
                 title: 'Click the icon to switch themes!',
