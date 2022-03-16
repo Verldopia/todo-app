@@ -78,14 +78,17 @@ export const postRegister = async (req, res, next) => {
             tasks: [
               {
                 title: 'Click the icon to switch themes!',
+                categoryId: 1,
                 checked: false,
               },
               {
                 title: 'Unleash chaos upon Gotham',
+                categoryId: 1,
                 checked: false,
               },
               {
                 title: 'Registered for this app',
+                categoryId: 1,
                 checked: true,
               },
             ],

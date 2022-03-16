@@ -15,7 +15,8 @@ export default new EntitySchema ({
         },
         checked: {
             type: "boolean",
-        },
+            default: "false"
+        }
     },
     relations: {
         categories: {

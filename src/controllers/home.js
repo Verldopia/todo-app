@@ -10,13 +10,15 @@ export const home = async (req, res, next) => {
 
   // Find in sql tables
   const userData = await userRepository.findOne({
-    where: { id: req.user?.userId },
+    where: { id: req.user?.userId ?? 1 },
     relations: [ "roles", "categories", "categories.tasks" ]
   });
 
-  const categoryData = userData.categories ?? []
-  const taskData = categoryData[0]?.tasks ?? []
-  const categories = categoryData[0]?.id
+  // Define data
+  const id = req.query.id - 1;
+  const categoryData = userData.categories ?? [];
+  const taskData = categoryData[ !id ? 0 : id ]?.tasks ?? [];
+  const categories = categoryData[ !id ? 0 : id ]?.id;
 
   // Render to homepage
   res.render('home', {
@@ -41,20 +43,26 @@ export const homePostObject = async (objectName, data, req, res, next) => {
       where: { title: req.body.title }
     });
 
+    // Delete doubles
     if(objectName === "Category") {
       delete req.body.categories
     } else {
       delete req.body.users
     }
 
+    console.log("query", req.query);
+    console.log("body", req.body);
+    console.log("req", req);
     // If object does not exists
     if(!object) {
       object = await repository.save({
         ...req.body,
         ...data,
+        categories: 4,
         slug: req.body.title
       });
     }
+    console.log(object);
     
     // Render homepage again
     res.redirect('/');
@@ -126,7 +134,7 @@ export const homeEditObject = async (objectName, status, req, res, next) => {
 
     // Add objects to done-list
     object = await repository.save({
-      ...object, 
+      ...object,
       checked: status,
       title: req.body.title
     });

@@ -53,6 +53,7 @@ app.post('/login', ...loginAuth, postLogin, login);
 app.post('/logout', logout);
 
 // App Tasks routing
+app.get('/getTasksCategory', home)
 app.post('/postCategory', (req, res, next) => homePostObject("Category",{slug: req.body.title}, req, res, next));
 app.post('/postTask', (req, res, next) => homePostObject("Task", {checked: false}, req, res, next));
 app.post('/deleteTask', (req, res, next) => homeDeleteObject("Task", req, res, next));
