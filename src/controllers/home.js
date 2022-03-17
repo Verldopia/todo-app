@@ -140,39 +140,3 @@ export const homeEditObject = async (objectName, status, req, res, next) => {
       next(e.message);
   }
 };
-
-
-/**
- * export const homeDeleteObject = async (objectName, req, res, next) => {
-  try {
-    // get the repositories
-    const repository = getConnection().getRepository(objectName);
-    const taskRepository = getConnection().getRepository("Task");
-    
-    // Search for object in database
-    let tasks = await taskRepository.find({
-      where: { categories: req.body.id }
-    });
-
-    let object = await repository.findOne({
-      where: { id: req.body.id }
-    });
-
-    console.log("tasks", tasks);
-    console.log("object", object);
-
-    if(tasks && object) {
-      tasks = taskRepository.remove(tasks);
-      res.redirect('/');
-      object = await repository.remove({
-        id: req.body.id
-      })
-    }
-    
-    // Render homepage again
-    res.redirect('/');
-  } catch(e) {
-      next(e.message);
-  }
-};
- */
