@@ -5,10 +5,10 @@
             <li id="category-{{id}}" data-order="{{id}}" class="box-categories__item">
                 <form action="/getTasksCategory" method="GET">
                     <input type="hidden" name="id" value="{{id}}">
-                    <input type="hidden" name="title" value="{{title}}">
                     <button class="categories--btn" href="{{slug}}">{{#capital title}}{{/capital}}</button>
                 </form>
                 <form action="/deleteCategory" class="input__form" method="POST">
+                    <input type="hidden" name="taskData" value="{{taskData}}">
                     <input type="hidden" name="id" value="{{id}}">
                     <button type="submit" class="done clear"></button>
                 </form>      

@@ -283,20 +283,6 @@ li p {
         margin: 2rem auto;
     }
 }
-.input,
-.p--pending {
-    padding-left: 1rem;
-    flex-grow: 2;
-    border-radius: 0.2rem;
-    border: 1px solid var(--primary-top);
-}
-.input {
-    height: calc(2.5rem - 2px);
-    cursor: auto;
-    font-size: 1rem;
-    border: none;
-    color: var(--primary-top);
-}
 .submit,
 .done,
 .clear,
@@ -483,6 +469,35 @@ li:hover {
 }
 .input-container label {
     color: var(--primary-text);
+}
+.input,
+.p--pending {
+    padding-left: 1rem;
+    flex-grow: 2;
+    border-radius: 0.2rem;
+}
+.input__container input {
+    height: calc(2.5rem - 2px);
+    cursor: auto;
+    font-size: 1rem;
+    border: none;
+    color: var(--primary-top);
+}
+.input__container {
+    position: relative;
+    width: calc(100% - 12rem);
+}
+.category__select {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 2.5rem;
+    border: none;
+    padding: 0 0.5rem;
+    border-left: 1px solid var(--primary-border);
+}
+.input {
+    width: calc(100% - 1rem);
 }
 .auth-container .footer-container {
     display: flex;

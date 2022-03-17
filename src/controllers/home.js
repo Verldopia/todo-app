@@ -50,19 +50,15 @@ export const homePostObject = async (objectName, data, req, res, next) => {
       delete req.body.users
     }
 
-    console.log("query", req.query);
-    console.log("body", req.body);
-    console.log("req", req);
     // If object does not exists
     if(!object) {
       object = await repository.save({
         ...req.body,
         ...data,
-        categories: 4,
+        categories: req.body.categoryId,
         slug: req.body.title
       });
     }
-    console.log(object);
     
     // Render homepage again
     res.redirect('/');
@@ -76,19 +72,18 @@ export const homeDeleteObject = async (objectName, req, res, next) => {
   try {
     // get the repositories
     const repository = getConnection().getRepository(objectName);
-    
-    // Search for object in database
+
     let object = await repository.findOne({
       where: { id: req.body.id }
     });
 
-    // If object exists, delete it
+    // Delete the object
     if(object) {
       object = await repository.remove({
         id: req.body.id
       })
     }
-    
+
     // Render homepage again
     res.redirect('/');
   } catch(e) {
@@ -145,3 +140,39 @@ export const homeEditObject = async (objectName, status, req, res, next) => {
       next(e.message);
   }
 };
+
+
+/**
+ * export const homeDeleteObject = async (objectName, req, res, next) => {
+  try {
+    // get the repositories
+    const repository = getConnection().getRepository(objectName);
+    const taskRepository = getConnection().getRepository("Task");
+    
+    // Search for object in database
+    let tasks = await taskRepository.find({
+      where: { categories: req.body.id }
+    });
+
+    let object = await repository.findOne({
+      where: { id: req.body.id }
+    });
+
+    console.log("tasks", tasks);
+    console.log("object", object);
+
+    if(tasks && object) {
+      tasks = taskRepository.remove(tasks);
+      res.redirect('/');
+      object = await repository.remove({
+        id: req.body.id
+      })
+    }
+    
+    // Render homepage again
+    res.redirect('/');
+  } catch(e) {
+      next(e.message);
+  }
+};
+ */
