@@ -5,8 +5,7 @@
         <input type="text" name="title" class="input" id="todo" placeholder="Run a marathon" autocomplete="off">
         {{> cat-input}}
     </div>
-    <input type="hidden" name="categories" value="{{categories}}"></input>
     <input type="hidden" name="users" value="{{userData.id}}"></input>
-    <button formaction="/postTask" type="submit" class="submit submit__task">+</button>
-    <button formaction="/postCategory" class="submit submit__category"></button>
+    <button formaction="/postTask/?id={{categories}}" type="submit" class="submit submit__task">+</button>
+    <button formaction="/postCategory?id={{categories}}" class="submit submit__category"></button>
 </form>

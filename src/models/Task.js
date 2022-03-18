@@ -1,29 +1,29 @@
-import typeorm from "typeorm";
+import typeorm from 'typeorm';
 
 const { EntitySchema } = typeorm;
-export default new EntitySchema ({
-    name: "Task",
-    tableName: "tasks",
-    columns: {
-        id: {
-            primary: true,
-            type: "int",
-            generated: true
-        },
-        title: {
-            type: "varchar"
-        },
-        checked: {
-            type: "boolean",
-            default: "false"
-        }
+export default new EntitySchema({
+  name: 'Task',
+  tableName: 'tasks',
+  columns: {
+    id: {
+      primary: true,
+      type: 'int',
+      generated: true,
     },
-    relations: {
-        categories: {
-            target: "Category",
-            type: "many-to-one",
-            joinColumn: true,
-            inverseSide: "tasks"
-        },
-    }
-})
+    title: {
+      type: 'varchar',
+    },
+    checked: {
+      type: 'boolean',
+      default: 'false',
+    },
+  },
+  relations: {
+    categories: {
+      target: 'Category',
+      type: 'many-to-one',
+      joinColumn: true,
+      inverseSide: 'tasks',
+    },
+  },
+});

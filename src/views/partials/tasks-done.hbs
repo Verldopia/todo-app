@@ -1,21 +1,29 @@
-<div class="box-clear">
-    {{#length taskData true "finished"}}{{/length}}
-    <form method="POST">
-        <input type="hidden" name="id" value="{{id}}">
-        <button formaction="/deleteDoneTasks" type="submit" class="submit submit--clear">Clear All</button>
-    </form>
+<div class='box-clear'>
+  {{#length taskData true 'finished'}}{{/length}}
+  <form method='POST'>
+    <input type='hidden' name='id' value='{{id}}' />
+    <button
+      formaction='/deleteDoneTasks'
+      type='submit'
+      class='submit submit--clear'
+    >Clear All</button>
+  </form>
 </div>
 
-<ul class="tasks--done box--bottom">
-    {{#each taskData}}
-        {{#if checked}}
-            <li id="task-{{id}}" data-order="{{id}}">
-                <p>{{#capital title}}{{/capital}}</p>
-                <form class="input__form" method="POST">
-                    <input type="hidden" name="id" value="{{id}}">
-                    <button formaction="/deleteTask" type="submit" class="done clear"></button>
-                </form>
-            </li>
-        {{/if}}
-    {{/each}}
+<ul class='tasks--done box--bottom'>
+  {{#each taskData}}
+    {{#if checked}}
+      <li id='task-{{id}}' data-order='{{id}}'>
+        <p>{{#capital title}}{{/capital}}</p>
+        <form class='input__form' method='POST'>
+          <input type='hidden' name='id' value='{{id}}' />
+          <button
+            formaction='/deleteTask'
+            type='submit'
+            class='done clear'
+          ></button>
+        </form>
+      </li>
+    {{/if}}
+  {{/each}}
 </ul>

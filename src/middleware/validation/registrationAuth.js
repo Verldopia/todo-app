@@ -1,7 +1,7 @@
 /**
  * The authentication validators
  */
- import { body } from "express-validator";
+import { body } from 'express-validator';
 
 export default [
   body('email')
@@ -16,8 +16,5 @@ export default [
     .bail()
     .isLength({ min: 6 })
     .withMessage('Password is not safe enough!'),
-  body('name')
-    .notEmpty()
-    .withMessage('No name detected')
-    .bail()
-]
+  body('name').notEmpty().withMessage('No name detected').bail(),
+];

@@ -1,18 +1,20 @@
-<nav class="nav-container">
-    <h3 class="larger--all">Categories</h3>
-    <ul class="box-categories">
-        {{#each categoryData}}
-            <li id="category-{{id}}" data-order="{{id}}" class="box-categories__item">
-                <form action="/getTasksCategory" method="GET">
-                    <input type="hidden" name="id" value="{{id}}">
-                    <button class="categories--btn" href="{{slug}}">{{#capital title}}{{/capital}}</button>
-                </form>
-                <form action="/deleteCategory" class="input__form" method="POST">
-                    <input type="hidden" name="taskData" value="{{taskData}}">
-                    <input type="hidden" name="id" value="{{id}}">
-                    <button type="submit" class="done clear"></button>
-                </form>      
-            </li>
-        {{/each}}
-    </ul>
+<nav class='nav-container'>
+  <h3 class='larger--all'>Categories</h3>
+  <ul class='box-categories'>
+    {{#each categoryData}}
+      <li id='category-{{id}}' data-order='{{id}}' class='box-categories__item'>
+        <form class='category__text' action='/getTasksCategory' method='GET'>
+          <input type='hidden' name='id' value='{{id}}' />
+          <button class='categories--btn' href='{{slug}}'>{{#capital
+              title
+            }}{{/capital}}</button>
+        </form>
+        <form action='/deleteCategory' class='input__form' method='POST'>
+          <input type='hidden' name='taskData' value='{{taskData}}' />
+          <input type='hidden' name='id' value='{{id}}' />
+          <button type='submit' class='done clear'></button>
+        </form>
+      </li>
+    {{/each}}
+  </ul>
 </nav>

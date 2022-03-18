@@ -1,14 +1,17 @@
 {
-  "name": "todo-app-demo",
+  "name": "opdracht1_michiel_willems",
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
+    "start": "nodemon ./src/app.js",
     "start:dev": "nodemon ./src/app.js --config nodemon.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -16,13 +19,21 @@
     "body-parser": "^1.19.2",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "express": "^4.17.3",
     "express-handlebars": "^6.0.2",
     "express-validator": "^6.14.0",
-    "handlebars": "^4.7.7",
     "jsonwebtoken": "^8.5.1",
+    "prettier": "^2.6.0",
+    "handlebars": "^4.7.7",
     "nodemon": "^2.0.15",
     "sqlite3": "^5.0.2",
-    "typeorm": "^0.2.44"
+    "typeorm": "^0.2.45"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
   }
 }

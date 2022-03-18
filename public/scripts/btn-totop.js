@@ -1,8 +1,5 @@
-
-$btn = document.getElementById('btn-totop');
-$main = document.querySelector('.main-container');
-$main.addEventListener('scroll', scrollDown);
-$btn.addEventListener('click', toTop);
+const $btn = document.getElementById('btn-totop');
+const $main = document.querySelector('.main-container');
 
 function scrollDown() {
   if ($main.scrollTop > 100) {
@@ -17,3 +14,6 @@ function scrollDown() {
 function toTop() {
   $main.scrollTop = 0;
 }
+
+$main.addEventListener('scroll', scrollDown);
+$btn.addEventListener('click', toTop);

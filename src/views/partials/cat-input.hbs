@@ -1,5 +1,7 @@
-<select class="category__select" name="categoryId">
-    {{#each categoryData}}
-            <option name="categoryId" value="{{id}}">{{#capital title}}{{/capital}}</option>
-        {{/each}}
+<select class='category__select' name='categories'>
+  {{#each categoryData}}
+    <option name='categories' value='{{id}}'>{{#capital
+        title
+      }}{{/capital}}</option>
+  {{/each}}
 </select>

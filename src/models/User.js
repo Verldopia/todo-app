@@ -1,27 +1,27 @@
-import typeorm from "typeorm";
+import typeorm from 'typeorm';
 
 const { EntitySchema } = typeorm;
 
 export default new EntitySchema({
-  name: "User",
-  tableName: "users",
+  name: 'User',
+  tableName: 'users',
   columns: {
     id: {
       primary: true,
-      type: "int",
+      type: 'int',
       generated: true,
     },
     email: {
-      type: "varchar",
+      type: 'varchar',
     },
     password: {
-      type: "varchar",
+      type: 'varchar',
     },
     name: {
-      type: "varchar"
-    }
+      type: 'varchar',
+    },
   },
-  relations: { 
+  relations: {
     categories: {
       target: 'Category',
       type: 'one-to-many',
@@ -29,10 +29,10 @@ export default new EntitySchema({
       inverseSide: 'users',
     },
     roles: {
-      target: "Role",
-      type: "many-to-one",
+      target: 'Role',
+      type: 'many-to-one',
       joinColumn: true,
-      inverseSide: "users"
-    }
-  }
+      inverseSide: 'users',
+    },
+  },
 });

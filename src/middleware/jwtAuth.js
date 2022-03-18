@@ -1,17 +1,14 @@
-/**
- * The JWT authentication middleware
- */
 import jwt from 'jsonwebtoken';
 
 export const jwtAuth = (req, res, next) => {
-    const token = req.cookies.token;
+  const { token } = req.cookies;
 
-    try {
-        const user = jwt.verify(token, process.env.TOKEN_SALT);
-        req.user = user;
-        next();
-    } catch(e) {
-        res.clearCookie('token');
-        return res.redirect('/login');
-    }
-}
+  try {
+    const user = jwt.verify(token, process.env.TOKEN_SALT);
+    req.user = user;
+    next();
+  } catch (e) {
+    res.clearCookie('token');
+    return res.redirect('/login');
+  }
+};

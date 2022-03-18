@@ -1,4 +1,4 @@
 {
-    "watch": ["./src"],
-    "ext": "js, css, json, mjs"
+  "watch": ["./src"],
+  "ext": "js, css, json, mjs"
 }
